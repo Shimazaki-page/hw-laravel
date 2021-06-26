@@ -23,6 +23,8 @@ class UsersTableSeeder extends Seeder
               'password' => bcrypt('password'), // password
               'remember_token' => Str::random(10),
               'role'=> 1,
+              'created_at'=>now(),
+              'updated_at'=>now(),
               ];
           DB::table('users')->insert($teacher);
 
