@@ -1,62 +1,79 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+#要件定義
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+##背景
 
-## About Laravel
+学習塾において、生徒の宿題管理は欠かせない業務の一つである。なぜなら生徒の成績に直結するからだ。しかしそれを効率的に行うことは難しい。たとえば、講師は毎回の宿題確認に10分程度を要し、授業が短縮されてしまう。また生徒は宿題を写し忘れることで提出ができない等といった状況は往々にして見られる。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+現在、学習の場のオンライン化が進み、studyplusによる学習管理アプリやwagacoによる業務効率化ツールなどのサービスが流通している。しかし学習塾に向けた、生徒の宿題管理を行えるツールはほとんど確認できない。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+そこで、学習塾における宿題管理を効果的に行えるツールを作成した。
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+##目的
 
-## Learning Laravel
+####宿題管理の一元化
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- 授業時間を確保できる
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- 講師が宿題提出状況を確認できる
 
-## Laravel Sponsors
+- 生徒が随時宿題を確認できる
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+##機能
+###外部機能
+- 生徒側
+    - 宿題確認
+    - 宿題画像・コメントの投稿
+    - ログインPWの変更
+- 講師側
+    - 宿題提出状況の確認
+    - 宿題の投稿・削除
+    - 生徒の追加・削除
+###内部機能
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+####画面一覧・機能
+- トップ画面
+    - 科目の表示→科目別生徒一覧へのリンク
+    - 生徒一覧表示→生徒一覧へのリンク
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- 科目別生徒一覧画面
+    - 生徒一覧表示→生徒別スレッドへのリンク
+    - （宿題達成状況一覧）
+    - 宿題投稿スレッド→宿題投稿スレッドへのリンク
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- 生徒別スレッド画面
+    - 最新の宿題表示
+    - コメントの投稿・閲覧
+    - コメントの削除→削除確認画面へのリンク
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- コメント削除確認画面
+    - コメント削除
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- 講師による宿題投稿スレッド
+    - 講師による宿題の投稿・削除
+
+
+- 講師による宿題削除確認画面
+    - 宿題の削除
+
+
+- 生徒一覧画面
+    - 生徒一覧表示→各生徒情報へのリンク
+    - 生徒追加→生徒追加画面へのリンク
+
+
+- 生徒情報
+    - 生徒削除→生徒削除確認画面へのリンク
+    - 生徒の受講科目を表示
+
+
+- 生徒ホーム画面
+    - 生徒別スレッド画面へのリンク
+    - パスワード変更画面へのリンク
+
+##ER図  
+
