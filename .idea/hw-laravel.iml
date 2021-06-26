@@ -122,6 +122,8 @@
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/bacon/bacon-qr-code" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/paragonie/constant_time_encoding" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/pragmarx/google2fa" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/livewire/livewire" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/laravel/sanctum" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
