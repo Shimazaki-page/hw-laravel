@@ -118,6 +118,7 @@
       <path value="$PROJECT_DIR$/backend/vendor/pragmarx/google2fa" />
       <path value="$PROJECT_DIR$/backend/vendor/livewire/livewire" />
       <path value="$PROJECT_DIR$/backend/vendor/laravel/sanctum" />
+      <path value="$PROJECT_DIR$/backend/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
