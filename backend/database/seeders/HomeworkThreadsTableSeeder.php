@@ -14,6 +14,6 @@ class HomeworkThreadsTableSeeder extends Seeder
      */
     public function run()
     {
-          HomeworkThread::factory(255)->count(100)->create();
+          HomeworkThread::factory()->count(100)->create();
     }
 }

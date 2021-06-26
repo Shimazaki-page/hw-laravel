@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\HomeworkThread;
+use App\Models\SubjectArea;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class HomeworkThreadFactory extends Factory
+class SubjectAreaFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = HomeworkThread::class;
+    protected $model = SubjectArea::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +22,7 @@ class HomeworkThreadFactory extends Factory
     public function definition()
     {
         return [
-            'comment' => $this->faker->realText(),
-            'subject_area_id' => $this->faker->numberBetween(1, 30),
+            //
         ];
     }
 }
