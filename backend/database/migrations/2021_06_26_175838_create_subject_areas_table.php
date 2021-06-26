@@ -15,8 +15,8 @@ class CreateSubjectAreasTable extends Migration
     {
         Schema::create('subject_areas', function (Blueprint $table) {
             $table->id();
-            $table->string('subject',10);
-            $table->string('classroom',10);
+            $table->string('subject', 10);
+            $table->string('classroom', 10);
             $table->timestamps();
         });
     }

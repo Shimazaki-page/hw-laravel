@@ -45,6 +45,5 @@ class SubjectAreasTableSeeder extends Seeder
                 DB::table('subject_areas')->insert($subject_param);
             }
         }
-
     }
 }
