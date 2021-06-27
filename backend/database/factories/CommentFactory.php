@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\HomeworkThread;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class HomeworkThreadFactory extends Factory
+class CommentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = HomeworkThread::class;
+    protected $model = Comment::class;
 
     /**
      * Define the model's default state.
@@ -23,7 +23,8 @@ class HomeworkThreadFactory extends Factory
     {
         return [
             'comment' => $this->faker->realText(),
-            'subject_area_id' => $this->faker->numberBetween(1, 5),
+            'name' => $this->faker->name(),
+            'user_subject_area_id'=>mt_rand(1,250),
         ];
     }
 }
