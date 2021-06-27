@@ -50,6 +50,16 @@ class CreateAppTables extends Migration
                 ->onDelete('cascade');
             $table->timestamps();
         });
+
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->string('name',20);
+            $table->string('comment', 255);
+            $table->foreignId('user_subject_area_id')->references('id')->on('user_subject_areas')
+                ->onDelete('cascade');
+            $table->timestamps();
+        });
+
     }
 
     /**
