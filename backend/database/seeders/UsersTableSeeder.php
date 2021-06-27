@@ -22,7 +22,8 @@ class UsersTableSeeder extends Seeder
               'email_verified_at' => now(),
               'password' => bcrypt('password'), // password
               'remember_token' => Str::random(10),
-              'role'=> 1,
+              'class'=>'講師',
+              'classroom_id'=>10,
               'created_at'=>now(),
               'updated_at'=>now(),
               ];

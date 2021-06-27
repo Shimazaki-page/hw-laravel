@@ -33,17 +33,12 @@ class SubjectAreasTableSeeder extends Seeder
             ]
         ];
 
-        $class_params = array('1XS', '1XY', '2XS', '2XY', '3XS', '3XY');
         $now = Carbon::now();
 
         foreach ($subject_params as $subject_param) {
             $subject_param['updated_at'] = $now;
             $subject_param['created_at'] = $now;
-
-            foreach ($class_params as $class_param) {
-                $subject_param['classroom'] = $class_param;
-                DB::table('subject_areas')->insert($subject_param);
-            }
         }
+        DB::table('subject_areas')->insert($subject_param);
     }
 }

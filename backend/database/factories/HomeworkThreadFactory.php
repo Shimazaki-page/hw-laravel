@@ -23,7 +23,8 @@ class HomeworkThreadFactory extends Factory
     {
         return [
             'comment' => $this->faker->realText(),
-            'subject_area_id' => $this->faker->numberBetween(1, 30),
+            'subject_area_id' => $this->faker->numberBetween(1, 5),
         ];
     }
 }
+//問題点：homeworkスレッドはクラスと強化によって定義されるが、クラスの取得が難しい
