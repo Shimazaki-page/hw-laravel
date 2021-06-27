@@ -20,7 +20,7 @@ class ClassroomSubjectAreasSeeder extends Seeder
                     'classroom_id' => $i,
                     'subject_area_id' => $n,
                 ];
-                DB::table('classroom_subject_areas')->insert($params);
+                DB::table('classroom_subject_area')->insert($params);
             }
         }
     }

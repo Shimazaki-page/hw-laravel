@@ -9,7 +9,7 @@ class SubjectArea extends Model
 {
     use HasFactory;
 
-    public function homework_threads()
+    public function homeworkThreads()
     {
          return $this->hasMany(HomeworkThread::class);
     }

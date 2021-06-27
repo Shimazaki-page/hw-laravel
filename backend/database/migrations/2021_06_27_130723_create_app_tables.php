@@ -15,7 +15,7 @@ class CreateAppTables extends Migration
     {
         Schema::create('classrooms', function (Blueprint $table) {
             $table->id();
-            $table->string('classname');
+            $table->string('class_name');
             $table->timestamps();
         });
 
@@ -27,6 +27,18 @@ class CreateAppTables extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 20);
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->foreignId('classroom_id')->references('id')->on('classrooms')
+                ->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        Schema::create('user_subject_area', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('user_id')->references('id')->on('users')
                 ->onDelete('cascade');
             $table->foreignId('subject_area_id')->references('id')->on('subject_areas')
@@ -34,9 +46,9 @@ class CreateAppTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('user_subject_areas', function (Blueprint $table) {
+        Schema::create('classroom_subject_area',function (Blueprint $table){
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users')
+            $table->foreignId('classroom_id')->references('id')->on('classrooms')
                 ->onDelete('cascade');
             $table->foreignId('subject_area_id')->references('id')->on('subject_areas')
                 ->onDelete('cascade');
@@ -46,16 +58,16 @@ class CreateAppTables extends Migration
         Schema::create('homework_threads', function (Blueprint $table) {
             $table->id();
             $table->string('comment', 255);
-            $table->foreignId('subject_area_id')->references('id')->on('subject_areas')
+            $table->foreignId('classroom_subject_area_id')->references('id')->on('classroom_subject_area')
                 ->onDelete('cascade');
             $table->timestamps();
         });
 
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('name',20);
+            $table->string('name', 20);
             $table->string('comment', 255);
-            $table->foreignId('user_subject_area_id')->references('id')->on('user_subject_areas')
+            $table->foreignId('user_subject_area_id')->references('id')->on('user_subject_area')
                 ->onDelete('cascade');
             $table->timestamps();
         });
@@ -69,8 +81,10 @@ class CreateAppTables extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('comments');
         Schema::dropIfExists('homework_threads');
-        Schema::dropIfExists('user_subject_areas');
+        Schema::dropIfExists('classroom_subject_area');
+        Schema::dropIfExists('user_subject_area');
         Schema::dropIfExists('users');
         Schema::dropIfExists('subject_areas');
         Schema::dropIfExists('classrooms');

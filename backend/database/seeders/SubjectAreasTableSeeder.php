@@ -38,7 +38,7 @@ class SubjectAreasTableSeeder extends Seeder
         foreach ($subject_params as $subject_param) {
             $subject_param['updated_at'] = $now;
             $subject_param['created_at'] = $now;
+            DB::table('subject_areas')->insert($subject_param);
         }
-        DB::table('subject_areas')->insert($subject_param);
     }
 }

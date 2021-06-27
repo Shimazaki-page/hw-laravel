@@ -33,7 +33,10 @@ class ClassroomsTableSeeder extends Seeder
             ],
             [
                 'class_name' => '3Y',
-            ]
+            ],
+            [
+                'class_name' => '講師',
+            ],
         ];
 
         $now = Carbon::now();

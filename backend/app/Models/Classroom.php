@@ -13,4 +13,9 @@ class Classroom extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function classroomSubjectAreas()
+    {
+        return $this->hasMany(ClassroomSubjectArea::class);
+    }
 }
