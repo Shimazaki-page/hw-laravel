@@ -43,7 +43,7 @@ class ClassroomsTableSeeder extends Seeder
         foreach ($params as $param) {
             $param['updated_at'] = $now;
             $param['created_at'] = $now;
+            DB::table('classrooms')->insert($param);
         }
-        DB::table('classrooms')->insert($params);
     }
 }

@@ -46,7 +46,7 @@ class CreateAppTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('classroom_subject_area',function (Blueprint $table){
+        Schema::create('classroom_subject_area', function (Blueprint $table) {
             $table->id();
             $table->foreignId('classroom_id')->references('id')->on('classrooms')
                 ->onDelete('cascade');

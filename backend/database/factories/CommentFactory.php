@@ -24,7 +24,7 @@ class CommentFactory extends Factory
         return [
             'comment' => $this->faker->realText(),
             'name' => $this->faker->name(),
-            'user_subject_area_id'=>mt_rand(1,250),
+            'user_subject_area_id' => mt_rand(1, 250),
         ];
     }
 }
