@@ -80,4 +80,4 @@ https://user-images.githubusercontent.com/79960631/123511002-bc37cf00-d6b9-11eb-
   - パスワード変更画面へのリンク
 
 ## ER図  
-https://user-images.githubusercontent.com/79960631/123510417-5433b980-d6b6-11eb-9e04-d7f16073ecd1.png
+https://user-images.githubusercontent.com/79960631/123565123-bdbae180-d7f6-11eb-9ca4-a36730245203.png
