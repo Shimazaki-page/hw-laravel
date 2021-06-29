@@ -47,8 +47,8 @@ class User extends Authenticatable
         return $this->belongsTo(Classroom::class);
     }
 
-    public function userSubjectAreas()
+    public function userSubject()
     {
-        return $this->hasMany(UserSubjectArea::class);
+        return $this->hasMany(UserSubject::class);
     }
 }

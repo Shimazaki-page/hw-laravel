@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ClassroomSubjectArea extends Model
+class UserSubject extends Model
 {
     use HasFactory;
 
-    public function homeworkThreads()
+    public function comments()
     {
-        return $this->hasMany(HomeworkThread::class);
+        return $this->hasMany(Comment::class);
     }
 }

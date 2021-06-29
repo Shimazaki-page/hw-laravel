@@ -23,7 +23,7 @@ class HomeworkThreadFactory extends Factory
     {
         return [
             'comment' => $this->faker->realText(),
-            'classroom_subject_area_id' => mt_rand(1, 30),
+            'classroom_subject_id' => mt_rand(1, 30),
         ];
     }
 }

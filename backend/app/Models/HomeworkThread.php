@@ -9,8 +9,8 @@ class HomeworkThread extends Model
 {
     use HasFactory;
 
-    public function subjectAreas()
+    public function subject()
     {
-        return $this->belongsTo(SubjectArea::class);
+        return $this->belongsTo(Subject::class);
     }
 }
