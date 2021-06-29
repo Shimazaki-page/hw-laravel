@@ -71,7 +71,6 @@ class CreateAppTables extends Migration
                 ->onDelete('cascade');
             $table->timestamps();
         });
-
     }
 
     /**
