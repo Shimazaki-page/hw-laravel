@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class SubjectAreasTableSeeder extends Seeder
+class SubjectsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,19 +17,19 @@ class SubjectAreasTableSeeder extends Seeder
     {
         $subject_params = [
             [
-                'subject' => '数学'
+                'subject_name' => '数学'
             ],
             [
-                'subject' => '英語'
+                'subject_name' => '英語'
             ],
             [
-                'subject' => '国語'
+                'subject_name' => '国語'
             ],
             [
-                'subject' => '理科'
+                'subject_name' => '理科'
             ],
             [
-                'subject' => '社会'
+                'subject_name' => '社会'
             ]
         ];
 
@@ -38,7 +38,7 @@ class SubjectAreasTableSeeder extends Seeder
         foreach ($subject_params as $subject_param) {
             $subject_param['updated_at'] = $now;
             $subject_param['created_at'] = $now;
-            DB::table('subject_areas')->insert($subject_param);
+            DB::table('subjects')->insert($subject_param);
         }
     }
 }

@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ClassroomSubjectAreasSeeder extends Seeder
+class ClassroomSubjectTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,11 +20,11 @@ class ClassroomSubjectAreasSeeder extends Seeder
             for ($n = 1; $n < 6; $n++) {
                 $params = [
                     'classroom_id' => $i,
-                    'subject_area_id' => $n,
+                    'subject_id' => $n,
                     'created_at' => $now,
                     'updated_at' => $now,
                 ];
-                DB::table('classroom_subject_area')->insert($params);
+                DB::table('classroom_subject')->insert($params);
             }
         }
     }
