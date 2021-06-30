@@ -34,7 +34,6 @@ class SubjectsTableSeeder extends Seeder
         ];
 
         $now = Carbon::now();
-
         foreach ($subject_params as $subject_param) {
             $subject_param['updated_at'] = $now;
             $subject_param['created_at'] = $now;
