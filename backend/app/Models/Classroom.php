@@ -14,7 +14,11 @@ class Classroom extends Model
         return $this->hasMany(User::class);
     }
 
+<<<<<<< HEAD
     public function classroomSubject()
+=======
+    public function classroomSubjects()
+>>>>>>> release
     {
         return $this->hasMany(ClassroomSubject::class);
     }

@@ -55,7 +55,7 @@ class CreateAppTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('homework_threads', function (Blueprint $table) {
+        Schema::create('homeworks', function (Blueprint $table) {
             $table->id();
             $table->string('comment', 255);
             $table->foreignId('classroom_subject_id')->references('id')->on('classroom_subject')
@@ -81,7 +81,7 @@ class CreateAppTables extends Migration
     public function down()
     {
         Schema::dropIfExists('comments');
-        Schema::dropIfExists('homework_threads');
+        Schema::dropIfExists('homeworks');
         Schema::dropIfExists('classroom_subject');
         Schema::dropIfExists('user_subject');
         Schema::dropIfExists('users');

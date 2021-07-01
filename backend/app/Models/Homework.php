@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-<<<<<<< HEAD
 <<<<<<< HEAD:backend/app/Models/Subject.php
 class Subject extends Model
 =======
@@ -21,14 +20,5 @@ class Homework extends Model
 =======
         return $this->belongsTo(Subject::class);
 >>>>>>> release:backend/app/Models/Homework.php
-=======
-class Subject extends Model
-{
-    use HasFactory;
-
-    public function homeworks()
-    {
-         return $this->hasMany(Homework::class);
->>>>>>> release
     }
 }

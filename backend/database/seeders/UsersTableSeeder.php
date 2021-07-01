@@ -30,8 +30,8 @@ class UsersTableSeeder extends Seeder
             'created_at' => $now,
             'updated_at' => $now,
         ];
-        DB::table('users')->insert($teacher);
 
+        DB::table('users')->insert($teacher);
         User::factory()->count(50)->create();
     }
 }
