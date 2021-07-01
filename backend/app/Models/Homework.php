@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserSubjectArea extends Model
+class Homework extends Model
 {
     use HasFactory;
 
-    public function comments(){
-        return $this->hasMany(Comment::class);
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
     }
 }

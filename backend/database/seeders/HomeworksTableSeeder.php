@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\HomeworkThread;
+use App\Models\Homework;
 use Illuminate\Database\Seeder;
 
-class HomeworkThreadsTableSeeder extends Seeder
+class HomeworksTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class HomeworkThreadsTableSeeder extends Seeder
      */
     public function run()
     {
-        HomeworkThread::factory()->count(100)->create();
+        Homework::factory()->count(100)->create();
     }
 }

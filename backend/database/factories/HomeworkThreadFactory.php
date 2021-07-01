@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\HomeworkThread;
+use App\Models\Homework;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class HomeworkThreadFactory extends Factory
@@ -12,7 +12,7 @@ class HomeworkThreadFactory extends Factory
      *
      * @var string
      */
-    protected $model = HomeworkThread::class;
+    protected $model = Homework::class;
 
     /**
      * Define the model's default state.
