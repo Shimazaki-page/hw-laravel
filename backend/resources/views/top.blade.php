@@ -15,10 +15,20 @@
             </li>
         </ul>
         <table class="top__table">
-            <tr class="top__column">
-                <th class="top__line--class"></th>
-                <td class="top__line--subject"></td>
-            </tr>
+            @foreach($classes as $class)
+                <tr class="top__column">
+                    <th class="top__line--class">
+                        {{$class->class_name}}
+                    </th>
+                    @foreach($subjects as $subject)
+                        <td class="top__line--subject">
+                            <a href="{{route('students.classroom-students',[$class->id,$subject->id])}}">
+                                {{$subject->subject_name}}
+                            </a>
+                        </td>
+                    @endforeach
+                </tr>
+            @endforeach
         </table>
     </div>
 @endsection
