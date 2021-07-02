@@ -39,8 +39,7 @@ laravel学習のため、学習塾での使用を想定した生徒の宿題管�
     - 生徒の追加・削除
     
 ### ワイヤーフレーム  
-https://user-images.githubusercontent.com/79960631/124213053-ea3e6880-db2a-11eb-812c-2c0af898a559.png  
-
+https://user-images.githubusercontent.com/79960631/124213479-9b450300-db2b-11eb-88fe-5ca3e5a7ed9a.png
 ### 内部機能
 
 https://user-images.githubusercontent.com/79960631/123511002-bc37cf00-d6b9-11eb-95c5-a07d11a5c204.png
