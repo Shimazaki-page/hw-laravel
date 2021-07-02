@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\Homework;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class HomeworkThreadFactory extends Factory
+class HomeworkFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
@@ -22,6 +22,7 @@ class HomeworkThreadFactory extends Factory
     public function definition()
     {
         return [
+            'name'=>$this->faker->name(),
             'comment' => $this->faker->realText(),
             'classroom_subject_id' => mt_rand(1, 30),
         ];

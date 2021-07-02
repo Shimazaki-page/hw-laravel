@@ -25,6 +25,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'test@test.com',
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
+            'status'=>'-',
             'remember_token' => Str::random(10),
             'classroom_id' => 7,
             'created_at' => $now,
