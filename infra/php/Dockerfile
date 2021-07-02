@@ -15,8 +15,3 @@ RUN apt-get update && \
 COPY ./php.ini /usr/local/etc/php/php.ini
 
 WORKDIR /work
-
-RUN composer install
-
-COPY .env.example .env
-
