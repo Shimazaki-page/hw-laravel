@@ -7,7 +7,7 @@
 @section('main')
     <div class="top">
         <div class="top__contents">
-            <p class="top__class-list-title">クラス一覧</p>
+            <p class="page-title">クラス一覧</p>
             <table class="top__table">
                 @foreach($classes as $class)
                     <tr class="top__column">
@@ -24,7 +24,7 @@
                     </tr>
                 @endforeach
             </table>
-            <a href="" class="top__students-list-link">生徒一覧へ</a>
+            <a href="{{route('students.students')}}" class="top__students-list-link">生徒一覧へ</a>
         </div>
     </div>
 @endsection
