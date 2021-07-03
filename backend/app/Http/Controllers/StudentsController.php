@@ -14,7 +14,10 @@ class StudentsController extends Controller
         $classes = Classroom::where('id', '<', 7)->get();
         $subjects = Subject::all();
 
-        return view('top')->with('classes', $classes)->with('subjects', $subjects);
+        return view('top')->with([
+            'classes' => $classes,
+            'subjects' => $subjects
+        ]);
     }
 
     public function showThreads()

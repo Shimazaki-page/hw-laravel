@@ -1,22 +1,26 @@
 // TOP
 
-.top{
+.top {
     text-align: center;
     color: #333333;
     font-weight: bold;
 
-    &__contents{
+    &__contents {
         margin-top: 60px;
     }
 
-    &__table{
+    &__class-list-title{
+        font-size: 20px;
+    }
+
+    &__table {
         margin: 30px auto;
         border-collapse: separate;
         border-spacing: 5px;
     }
 
-    &__line{
-        &--class{
+    &__line {
+        &--class {
             padding: 10px 20px;
             color: #ffffff;
             background-color: $main-color;
@@ -24,19 +28,19 @@
         }
     }
 
-    &__subject-link{
+    &__subject-link {
         display: block;
         padding: 10px 20px;
         background-color: #ffffe0;
         border-radius: 3px;
 
-        &:hover{
+        &:hover {
             background-color: #f5deb3;
             transition: .3s ease;
         }
     }
 
-    &__students-list-link{
+    &__students-list-link {
         display: inline-block;
         padding: 10px 30px;
         background-color: $main-color;
@@ -45,7 +49,7 @@
         border: solid 2px #ff4500;
         border-radius: 3px;
 
-        &:hover{
+        &:hover {
             opacity: .7;
             transition: .3s ease;
         }

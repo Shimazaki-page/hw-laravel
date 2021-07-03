@@ -532,6 +532,9 @@ html, body {
 .top__contents {
   margin-top: 60px;
 }
+.top__class-list-title {
+  font-size: 20px;
+}
 .top__table {
   margin: 30px auto;
   border-collapse: separate;
