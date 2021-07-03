@@ -1,9 +1,53 @@
+// TOP
+
 .top{
-    background-color: blue;
-}
-.top__link{
-    color: red;
-}
-.container{
-    background-color: #111;
+    text-align: center;
+    color: #333333;
+    font-weight: bold;
+
+    &__contents{
+        margin-top: 60px;
+    }
+
+    &__table{
+        margin: 30px auto;
+        border-collapse: separate;
+        border-spacing: 5px;
+    }
+
+    &__line{
+        &--class{
+            padding: 10px 20px;
+            color: #ffffff;
+            background-color: $main-color;
+            border-radius: 3px;
+        }
+    }
+
+    &__subject-link{
+        display: block;
+        padding: 10px 20px;
+        background-color: #ffffe0;
+        border-radius: 3px;
+
+        &:hover{
+            background-color: #f5deb3;
+            transition: .3s ease;
+        }
+    }
+
+    &__students-list-link{
+        display: inline-block;
+        padding: 10px 30px;
+        background-color: $main-color;
+        color: #ffffff;
+        letter-spacing: .1em;
+        border: solid 2px #ff4500;
+        border-radius: 3px;
+
+        &:hover{
+            opacity: .7;
+            transition: .3s ease;
+        }
+    }
 }
