@@ -36,5 +36,6 @@ class UserTableSeeder extends Seeder
         ];
         User::create($teacher);
 
+        User::factory()->count(20)->create();
     }
 }
