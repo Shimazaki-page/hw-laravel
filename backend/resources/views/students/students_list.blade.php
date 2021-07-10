@@ -6,9 +6,13 @@
 
 @section('main')
     <div class="students">
-        <p class="page-title">生徒一覧</p>
+        <div class="page-title">
+            <p>生徒一覧</p>
+        </div>
         <div class="students__contents">
-            <a href="" class="students__add-student">生徒追加</a>
+            <div class="students__add-student">
+                <a class="students__add-student-link" href="">生徒追加</a>
+            </div>
             <table class="students__table">
                 <tr class="students__column--top">
                     <th class="students__table-item">氏名</th>

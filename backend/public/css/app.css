@@ -484,8 +484,8 @@ html, body {
 }
 
 .page-title {
-  display: block;
-  margin-top: 60px;
+  margin-top: 40px;
+  text-align: center;
   font-weight: bold;
   font-size: 20px;
 }
@@ -569,4 +569,33 @@ html, body {
 .top__students-list-link:hover {
   opacity: 0.7;
   transition: 0.3s ease;
+}
+
+.students__contents {
+  margin-top: 20px;
+  text-align: center;
+}
+.students__add-student {
+  text-align: right;
+}
+.students__table {
+  margin: 0 auto;
+  width: 70%;
+  border-collapse: separate;
+  border-spacing: 2px;
+}
+.students__table-item {
+  text-align: center;
+  background-color: #ff7f50;
+  padding: 10px 0;
+  border-radius: 5px 5px 0 0;
+}
+.students__table-item--body {
+  padding: 1px 0;
+}
+.students__table-item--body:last-child {
+  color: #3490dc;
+}
+.students__column--body {
+  background-color: #ffffe0;
 }

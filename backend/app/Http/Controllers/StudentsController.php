@@ -29,7 +29,7 @@ class StudentsController extends Controller
     public function showStudents()
     {
         $students=User::with('classroom')->where('classroom_id','<=',6)
-            ->orderBy('classroom_id')->simplePaginate(25);
+            ->orderBy('classroom_id')->simplePaginate(20);
 
         return view('students.students_list')->with('students',$students);
     }

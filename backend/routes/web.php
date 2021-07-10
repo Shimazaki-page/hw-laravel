@@ -14,14 +14,14 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Auth::routes();
 
 Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/top', [Controllers\StudentsController::class, 'showClasses'])->name('top');
+Route::get('/', [Controllers\StudentsController::class, 'showClasses'])->name('top');
 Route::get('/students/{classroom-id}/{subject-id}', [Controllers\StudentsController::class, 'showThreads'])
     ->name('students.classroom-students');
 Route::get('/students', [Controllers\StudentsController::class, 'showStudents'])->name('students.students');
