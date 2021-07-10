@@ -103,7 +103,14 @@ class CreateAppTables extends Migration
      */
     public function down()
     {
-
+        Schema::dropIfExists('comments');
+        Schema::dropIfExists('threads');
+        Schema::dropIfExists('homeworks');
+        Schema::dropIfExists('student_subject');
+        Schema::dropIfExists('teachers');
+        Schema::dropIfExists('students');
+        Schema::dropIfExists('subjects');
+        Schema::dropIfExists('classrooms');
         Schema::dropIfExists('users');
 
     }
