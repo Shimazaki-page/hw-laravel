@@ -44,4 +44,4 @@ https://user-images.githubusercontent.com/79960631/125148514-c227b880-e16d-11eb-
 https://user-images.githubusercontent.com/79960631/124242518-c80f0f80-db57-11eb-9337-80e222ac8b8f.png
 
 ## ER図
-https://user-images.githubusercontent.com/79960631/125148524-da97d300-e16d-11eb-81ec-f86629c4465a.png
+https://user-images.githubusercontent.com/79960631/125174056-a0761200-e1fd-11eb-925a-99220002ffca.png

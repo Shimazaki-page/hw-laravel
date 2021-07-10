@@ -46,14 +46,6 @@ class CreateAppTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('teachers', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->foreignId('user_id')->references('id')->on('users')
-                ->onDelete('cascade');
-            $table->timestamps();
-        });
-
         Schema::create('student_subject', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_id')->references('id')->on('students')
@@ -107,7 +99,6 @@ class CreateAppTables extends Migration
         Schema::dropIfExists('threads');
         Schema::dropIfExists('homeworks');
         Schema::dropIfExists('student_subject');
-        Schema::dropIfExists('teachers');
         Schema::dropIfExists('students');
         Schema::dropIfExists('subjects');
         Schema::dropIfExists('classrooms');
