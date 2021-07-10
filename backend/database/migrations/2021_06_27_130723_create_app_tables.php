@@ -27,11 +27,13 @@ class CreateAppTables extends Migration
         Schema::create('classrooms', function (Blueprint $table) {
             $table->id();
             $table->string('class_name');
+            $table->timestamps();
         });
 
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->string('subject_name');
+            $table->timestamps();
         });
 
         Schema::create('students', function (Blueprint $table) {
@@ -41,6 +43,7 @@ class CreateAppTables extends Migration
                 ->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')
                 ->onDelete('cascade');
+            $table->timestamps();
         });
 
         Schema::create('teachers', function (Blueprint $table) {
@@ -48,6 +51,7 @@ class CreateAppTables extends Migration
             $table->string('name');
             $table->foreignId('user_id')->references('id')->on('users')
                 ->onDelete('cascade');
+            $table->timestamps();
         });
 
         Schema::create('student_subject', function (Blueprint $table) {
@@ -56,6 +60,7 @@ class CreateAppTables extends Migration
                 ->onDelete('cascade');
             $table->foreignId('subject_id')->references('id')->on('subjects')
                 ->onDelete('cascade');
+            $table->timestamps();
         });
 
         Schema::create('homeworks', function (Blueprint $table) {
@@ -67,6 +72,7 @@ class CreateAppTables extends Migration
                 ->onDelete('cascade');
             $table->foreignId('subject_id')->references('id')->on('subjects')
                 ->onDelete('cascade');
+            $table->timestamps();
         });
 
         Schema::create('threads', function (Blueprint $table) {
@@ -76,6 +82,7 @@ class CreateAppTables extends Migration
                 ->onDelete('cascade');
             $table->foreignId('student_id')->references('id')->on('students')
                 ->onDelete('cascade');
+            $table->timestamps();
         });
 
         Schema::create('comments', function (Blueprint $table) {
@@ -85,6 +92,7 @@ class CreateAppTables extends Migration
             $table->string('image');
             $table->foreignId('thread_id')->references('id')->on('threads')
                 ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
