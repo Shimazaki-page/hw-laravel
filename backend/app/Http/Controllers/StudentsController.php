@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classroom;
+use App\Models\Student;
 use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -28,8 +29,9 @@ class StudentsController extends Controller
 
     public function showStudents()
     {
-        $students=User::with('classroom')->where('classroom_id','<=',6)
-            ->orderBy('classroom_id')->simplePaginate(20);
+        $students=Student::with(['classroom','user'=>function($query){
+            $query->where('role','=','10');
+        }])->orderBy('classroom_id')->simplePaginate(10);
 
         return view('students.students_list')->with('students',$students);
     }

@@ -592,30 +592,47 @@ html, body {
 }
 
 .students__contents {
-  margin-top: 20px;
+  margin-top: 50px;
   text-align: center;
 }
-.students__add-student {
-  text-align: right;
-}
 .students__table {
-  margin: 0 auto;
-  width: 70%;
+  margin-left: 20%;
+  width: 55%;
   border-collapse: separate;
   border-spacing: 2px;
+}
+.students__table-body--mail {
+  text-align: left;
 }
 .students__table-item {
   text-align: center;
   background-color: #0099FF;
+  color: #ffffff;
   padding: 10px 0;
-  border-radius: 5px 5px 0 0;
+}
+.students__table-item--name {
+  width: 20%;
 }
 .students__table-item--body {
-  padding: 1px 0;
+  padding: 3px 0;
+  font-size: 18px;
 }
 .students__table-item--body:last-child {
   color: #3490dc;
 }
+.students__table-item--body:last-child:hover {
+  color: #1a202c;
+  transition: 0.2s ease;
+}
 .students__column--body {
-  background-color: #ffffe0;
+  background-color: #fff;
+}
+.students__column--body:hover {
+  opacity: 0.6;
+  transition: 0.2s ease;
+}
+.students__pagination {
+  text-align: left;
+  margin-left: 42%;
+  margin-top: 20px;
 }
