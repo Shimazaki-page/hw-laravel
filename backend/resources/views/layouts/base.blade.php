@@ -26,7 +26,14 @@
     <x-header></x-header>
 </header>
 <div class="main">
-    <div class="container">
+        <div class="menu">
+            <ul class="menu__lists">
+                <li class="menu__list"><a href="{{route('top')}}" class="menu__link">宿題提出状況</a></li>
+                <li class="menu__list"><a href="" class="menu__link">生徒一覧</a></li>
+                <li class="menu__list"><a href="" class="menu__link">生徒追加</a></li>
+            </ul>
+        </div>
+    <div class="contents">
         @yield('main')
     </div>
 </div>
