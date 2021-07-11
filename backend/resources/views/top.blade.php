@@ -1,12 +1,12 @@
 @extends('layouts.base')
 
 @section('title')
-    TOP | 宿題管理システム
+    クラス一覧 | 宿題管理システム
 @endsection
 
 @section('main')
     <div class="top">
-        <div class="page-title">宿題提出状況</div>
+        <div class="page-title">クラス一覧</div>
         <table class="top__table">
             @foreach($classes as $class)
                 <tr class="top__column">
