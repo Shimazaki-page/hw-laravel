@@ -22,9 +22,12 @@ class StudentsController extends Controller
         ]);
     }
 
-    public function showThreads()
+    public function showStatus($classroom,$subject)
     {
-        return view('students.classroom_students');
+       return view('students.status')->with([
+           'classroom'=>$classroom,
+           'subject'=>$subject
+       ]);
     }
 
     public function showStudents()
