@@ -1,8 +1,8 @@
 .header {
     position: fixed;
-    background-color: $main-color;
+    background-color: #ffffff;
     width: 100%;
-    box-shadow:0 0 5px  #4a5568;
+    box-shadow:0 0 5px  $main-color;
 
     &__container {
         max-width: 1200px;
@@ -16,7 +16,9 @@
         display: block;
         padding: 10px 20px;
         font-size: 20px;
-        color: #ffffff;
+        font-weight: bold;
+        letter-spacing: .2em;
+        color: $main-color;
 
         &:hover {
             color: #4a5568;
@@ -40,7 +42,7 @@
 
     &__auth-list{
         margin: 0 10px;
-        color: #ffffff;
+        color: $main-color;
 
         &:hover {
             color: #4a5568;

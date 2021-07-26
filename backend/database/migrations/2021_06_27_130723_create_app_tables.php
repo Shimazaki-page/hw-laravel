@@ -38,8 +38,7 @@ class CreateAppTables extends Migration
 
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('classroom_id')->references('id')->on('classroom')
+            $table->foreignId('classroom_id')->references('id')->on('classrooms')
                 ->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')
                 ->onDelete('cascade');

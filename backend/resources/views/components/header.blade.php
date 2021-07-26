@@ -1,6 +1,6 @@
 <div class="header__container">
     <div class="header__contents--left">
-        <a href="{{route('top')}}" class="header__logo">宿題管理システム</a>
+        <a href="{{route('top')}}" class="header__logo">HOMEWORKing</a>
     </div>
     <div class="header__contents--right">
         <ul class="header__authentication">
