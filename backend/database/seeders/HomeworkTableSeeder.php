@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Homework;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class HomeworkTableSeeder extends Seeder
@@ -17,7 +18,7 @@ class HomeworkTableSeeder extends Seeder
         $homeworks = [
             'name' => '先生',
             'homework' => 'hogehoge問題集の全てをやってきてください。',
-            'date' => now(),
+            'date' => Carbon::now(),
         ];
         for ($i = 1; $i <= 6; $i++) {
             $homeworks['classroom_id'] = $i;

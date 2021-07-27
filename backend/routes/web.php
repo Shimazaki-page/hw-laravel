@@ -20,10 +20,7 @@ use App\Http\Controllers;
 
 Auth::routes();
 
-Route::get('/students/{class_id}/{subject_id}', [Controllers\StudentsController::class, 'showStatus'])->name('students.status');
-//Route::get('/students/{id}/{ids}',function (){
-//    return view('welcome');
-//})->name('students.status');
 Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [Controllers\StudentsController::class, 'showClasses'])->name('top');
 Route::get('/students', [Controllers\StudentsController::class, 'showStudents'])->name('students.students-list');
+Route::get('/students/{classroom}/{subject}', [Controllers\StudentsController::class, 'showStatus'])->name('students.status');

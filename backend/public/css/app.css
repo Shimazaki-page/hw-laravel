@@ -636,3 +636,41 @@ html, body {
   margin-left: 42%;
   margin-top: 20px;
 }
+
+.status__title {
+  margin: 50px 50px;
+  font-size: 20px;
+}
+.status__title-left {
+  margin-bottom: 15px;
+}
+.status__table {
+  margin-left: 15%;
+  text-align: center;
+  background-color: #fff;
+}
+.status__table th, .status__table td {
+  border: solid 1px black;
+  padding: 3px 8px;
+  color: #111;
+}
+.status__date {
+  padding: 3px;
+}
+.status__table-link {
+  width: 100%;
+}
+.status__button {
+  text-align: center;
+}
+.status__submit-link {
+  padding: 10px 30px;
+  background-color: #0099FF;
+  color: #fff;
+  margin-top: 100px;
+  display: inline-block;
+  transition: ease 0.3s;
+}
+.status__submit-link:hover {
+  color: #111;
+}

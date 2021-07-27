@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classroom;
+use App\Models\Homework;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\User;
@@ -22,20 +23,29 @@ class StudentsController extends Controller
         ]);
     }
 
-    public function showStatus($classroom,$subject)
+    public function showStatus(Classroom $classroom, Subject $subject)
     {
-       return view('students.status')->with([
-           'classroom'=>$classroom,
-           'subject'=>$subject
-       ]);
+        $homeworks = Homework::where([
+            'classroom_id' => $classroom->id,
+            'subject_id' => $subject->id
+        ])->get();
+
+        $students = Student::where('classroom_id',$classroom->id)->with('user')->get();
+
+        return view('students.status')->with([
+            'classroom' => $classroom,
+            'subject' => $subject,
+            'homeworks' => $homeworks,
+            'students' => $students
+        ]);
     }
 
     public function showStudents()
     {
-        $students=Student::with(['classroom','user'=>function($query){
-            $query->where('role','=','10');
+        $students = Student::with(['classroom', 'user' => function ($query) {
+            $query->where('role', '=', '10');
         }])->orderBy('classroom_id')->simplePaginate(10);
 
-        return view('students.students_list')->with('students',$students);
+        return view('students.students_list')->with('students', $students);
     }
 }

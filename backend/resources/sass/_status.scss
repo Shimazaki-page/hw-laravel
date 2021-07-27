@@ -1,0 +1,48 @@
+.status{
+    &__title{
+        margin: 50px 50px ;
+        font-size: 20px;
+
+        &-left{
+            margin-bottom: 15px;
+        }
+    }
+
+    &__table{
+        margin-left: 15%;
+        text-align: center;
+        background-color: #fff;
+    }
+
+    &__table th,&__table td{
+        border: solid 1px black;
+        padding: 3px 8px;
+        color: #111;
+    }
+
+    &__date{
+        padding: 3px;
+    }
+
+    &__table-link{
+        width: 100%;
+    }
+
+    &__button{
+        text-align: center;
+    }
+
+    &__submit-link{
+        padding: 10px 30px;
+        background-color: $main-color;
+        color: #fff;
+        margin-top: 100px;
+        display: inline-block;
+        transition: ease .3s;
+
+        &:hover{
+            color: #111;
+        }
+    }
+}
+
