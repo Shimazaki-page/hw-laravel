@@ -28,3 +28,4 @@ Route::get('/homework/{classroom_id}/{subject_id}',[Controllers\ThreadsControlle
 Route::get('/homework/verify',[Controllers\ThreadsController::class,'verifyHomework'])->name('homework.verify');
 Route::post('/homework/verify',[Controllers\RegisterController::class,'registerHomework'])->name('register.homework');
 Route::get('/submit/{thread}',[Controllers\ThreadsController::class,'showSubmitThread'])->name('submit-thread');
+Route::post('/submit/{thread}',[Controllers\RegisterController::class,'registerComment'])->name('register-comment');

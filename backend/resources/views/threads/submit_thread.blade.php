@@ -32,7 +32,8 @@
                 </div>
             @endforeach
         @endif
-        <form action="" method="get" enctype="multipart/form-data">
+        <form action="{{route('register-comment',[$thread->id])}}" method="post" enctype="multipart/form-data">
+            @csrf
             <div>
                 <label for="comment">コメント</label>
                 <textarea name="comment" id="comment" cols="30" rows="10"></textarea>

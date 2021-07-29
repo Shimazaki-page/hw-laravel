@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Homework;
 use App\Models\Student;
 use App\Models\Thread;
@@ -17,14 +18,14 @@ class RegisterController extends Controller
             'name' => $request->input('name'),
             'classroom_id' => $request->input('classroom_id'),
             'subject_id' => $request->input('subject_id'),
-            'date'=>Carbon::now()
+            'date' => Carbon::now()
         ]);
 
         $students = Student::where([
             'classroom_id' => $request->input('classroom_id')
         ])->get();
 
-        foreach ($students as $student){
+        foreach ($students as $student) {
             Thread::create([
                 'homework_id' => $homework->id,
                 'student_id' => $student->id,
@@ -33,5 +34,17 @@ class RegisterController extends Controller
         }
 
         return redirect(route('homework', [$request->input('classroom_id'), $request->input('subject_id')]));
+    }
+
+    public function registerComment($thread, Request $request)
+    {
+        Comment::create([
+            'name' => $request->input('name'),
+            'comment' => $request->input('comment'),
+            'image' => $request->input('image'),
+            'thread_id' => $thread
+        ]);
+
+        return redirect(route('submit-thread',[$thread]));
     }
 }
