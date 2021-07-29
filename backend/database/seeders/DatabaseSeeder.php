@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(StudentSubjectTableSeeder::class);
         $this->call(HomeworkTableSeeder::class);
         $this->call(ThreadTableSeeder::class);
+        $this->call(CommentTableSeeder::class);
     }
 }

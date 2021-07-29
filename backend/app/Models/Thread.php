@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Thread extends Model
 {
     use HasFactory;
+    protected $fillable=['homework_id','student_id','status'];
 
     public function student()
     {

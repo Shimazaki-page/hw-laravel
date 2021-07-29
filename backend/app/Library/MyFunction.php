@@ -11,7 +11,7 @@ class MyFunction
         $thread = Thread::where([
             'student_id' => $student_id,
             'homework_id' => $homework_id
-        ])->get(['status']);
+        ])->get();
         return $thread;
     }
 }

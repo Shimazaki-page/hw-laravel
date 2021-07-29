@@ -24,3 +24,7 @@ Route::get('/home', [Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [Controllers\StudentsController::class, 'showClasses'])->name('top');
 Route::get('/students', [Controllers\StudentsController::class, 'showStudents'])->name('students.students-list');
 Route::get('/students/{classroom}/{subject}', [Controllers\StudentsController::class, 'showStatus'])->name('students.status');
+Route::get('/homework/{classroom_id}/{subject_id}',[Controllers\ThreadsController::class,'showHomeworkSubmit'])->name('homework');
+Route::get('/homework/verify',[Controllers\ThreadsController::class,'verifyHomework'])->name('homework.verify');
+Route::post('/homework/verify',[Controllers\RegisterController::class,'registerHomework'])->name('register.homework');
+Route::get('/submit/{thread}',[Controllers\ThreadsController::class,'showSubmitThread'])->name('submit-thread');

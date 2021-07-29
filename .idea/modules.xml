@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/hw-laravel.iml" filepath="$PROJECT_DIR$/.idea/hw-laravel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../melpit-workspace/.idea/melpit-workspace.iml" filepath="$PROJECT_DIR$/../melpit-workspace/.idea/melpit-workspace.iml" />
     </modules>
   </component>
 </project>

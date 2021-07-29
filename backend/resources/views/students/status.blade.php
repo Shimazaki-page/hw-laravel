@@ -23,14 +23,14 @@
                     <th class="status__table-name">{{$student->user->name}}</th>
                     @foreach($homeworks as $homework)
                         @foreach(MyFunction::scopeStatus($student->id,$homework->id) as $thread)
-                            <td class="status__table-status"><a class="status__table-link" href="">{{$thread->status}}</a></td>
+                            <td class="status__table-status"><a class="status__table-link" href="{{route('submit-thread',[$thread->id])}}">{{$thread->status}}</a></td>
                         @endforeach
                     @endforeach
                 </tr>
             @endforeach
         </table>
         <div class="status__button">
-            <a href="" class="status__submit-link">宿題投稿</a>
+            <a href="{{route('homework',[$classroom->id,$subject->id])}}" class="status__submit-link">宿題投稿</a>
         </div>
     </div>
 @endsection

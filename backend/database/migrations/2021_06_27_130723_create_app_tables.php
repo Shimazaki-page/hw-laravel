@@ -80,7 +80,7 @@ class CreateAppTables extends Migration
             $table->id();
             $table->string('name');
             $table->string('comment');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->foreignId('thread_id')->references('id')->on('threads')
                 ->onDelete('cascade');
             $table->timestamps();
