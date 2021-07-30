@@ -30,7 +30,7 @@
             <ul class="menu__lists">
                 <li class="menu__list"><a href="{{route('top')}}" class="menu__link">クラス一覧</a></li>
                 <li class="menu__list"><a href="{{route('students.students-list')}}" class="menu__link">生徒一覧</a></li>
-                <li class="menu__list"><a href="" class="menu__link">生徒追加</a></li>
+                <li class="menu__list"><a href="{{route('add-student-form')}}" class="menu__link">生徒追加</a></li>
             </ul>
         </div>
     <div class="contents">

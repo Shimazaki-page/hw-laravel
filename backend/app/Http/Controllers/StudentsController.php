@@ -48,4 +48,15 @@ class StudentsController extends Controller
 
         return view('students.students_list')->with('students', $students);
     }
+
+    public function showAddStudentForm()
+    {
+        $classrooms=Classroom::all();
+        $subjects=Subject::all();
+
+        return view('add-student')->with([
+            'classrooms'=>$classrooms,
+            'subjects'=>$subjects
+        ]);
+    }
 }

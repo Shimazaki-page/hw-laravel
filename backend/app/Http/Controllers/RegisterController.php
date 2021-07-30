@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Homework;
 use App\Models\Student;
+use App\Models\StudentSubject;
 use App\Models\Thread;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -46,5 +48,34 @@ class RegisterController extends Controller
         ]);
 
         return redirect(route('submit-thread',[$thread]));
+    }
+
+    public function addStudent(Request $request)
+    {
+        User::create([
+            'name'=>$request->input('name'),
+            'email'=>$request->input('email'),
+            'password'=>$request->input('password'),
+            'role'=>1
+        ]);
+
+        $new_user=User::where('email',$request->input('email'))->first();
+
+        Student::create([
+            'classroom_id'=>$request->classroom,
+            'user_id'=>$new_user->id
+        ]);
+
+        $new_student=Student::where('user_id',$new_user->id)->first();
+        $subjects=$request->input('subject');
+
+        foreach ($subjects as $subject){
+            StudentSubject::create([
+                'subject_id'=>$subject,
+                'student_id'=>$new_student->id
+            ]);
+        }
+
+        return redirect('add-student');
     }
 }

@@ -29,3 +29,5 @@ Route::get('/homework/verify',[Controllers\ThreadsController::class,'verifyHomew
 Route::post('/homework/verify',[Controllers\RegisterController::class,'registerHomework'])->name('register.homework');
 Route::get('/submit/{thread}',[Controllers\ThreadsController::class,'showSubmitThread'])->name('submit-thread');
 Route::post('/submit/{thread}',[Controllers\RegisterController::class,'registerComment'])->name('register-comment');
+Route::get('/add-student',[Controllers\StudentsController::class,'showAddStudentForm'])->name('add-student-form');
+Route::post('/add-student',[Controllers\RegisterController::class,'addStudent'])->name('add-student');
