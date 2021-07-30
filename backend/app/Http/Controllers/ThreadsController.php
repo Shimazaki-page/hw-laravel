@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Homework;
 use App\Models\Comment;
+use App\Models\Student;
 use App\Models\Thread;
 use Illuminate\Http\Request;
 
@@ -38,14 +39,17 @@ class ThreadsController extends Controller
         ]);
     }
 
-    public function showSubmitThread(Thread $thread)
+    public function showSubmitThread(Thread $thread ,Student $student)
     {
         $comments = Comment::where('thread_id', $thread->id)->get();
         $homework = Homework::where('id', $thread->homework_id)->first();
+        $student->load('user','classroom');
+
         return view('threads.submit_thread')->with([
             'comments' => $comments,
             'thread' => $thread,
-            'homework' => $homework
+            'homework' => $homework,
+            'student'=>$student
         ]);
     }
 }

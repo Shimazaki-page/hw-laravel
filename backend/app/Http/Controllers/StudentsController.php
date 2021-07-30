@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classroom;
 use App\Models\Homework;
 use App\Models\Student;
+use App\Models\StudentSubject;
 use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -30,7 +31,8 @@ class StudentsController extends Controller
             'subject_id' => $subject->id
         ])->get();
 
-        $students = Student::where('classroom_id',$classroom->id)->with('user')->get();
+//        $scope_students_id=StudentSubject::where('subject_id',$subject->id)->get();
+        $students = Student::where('classroom_id', $classroom->id)->with('user')->get();
 
         return view('students.status')->with([
             'classroom' => $classroom,
@@ -51,11 +53,37 @@ class StudentsController extends Controller
 
     public function showAddStudentForm()
     {
-        $classrooms=Classroom::all();
-        $subjects=Subject::all();
+        $classrooms = Classroom::all();
+        $subjects = Subject::all();
 
         return view('add-student')->with([
-            'classrooms'=>$classrooms,
+            'classrooms' => $classrooms,
+            'subjects' => $subjects
+        ]);
+    }
+
+    public function showHomework(Student $student, Subject $subject)
+    {
+        $homeworks = Homework::where([
+            'classroom_id' => $student->classroom_id,
+            'subject_id' => $subject->id
+        ])->simplePaginate(5);
+
+        return view('student-homework-list')->with([
+            'homeworks' => $homeworks,
+            'student' => $student,
+            'subject' => $subject
+        ]);
+    }
+
+    public function showMypage(Student $student)
+    {
+        $subjects = Subject::with(['studentSubject' => function ($query) use ($student) {
+            $query->where('student_id', $student->id);
+        }])->get();
+
+        return view('mypage')->with([
+            'student'=>$student,
             'subjects'=>$subjects
         ]);
     }

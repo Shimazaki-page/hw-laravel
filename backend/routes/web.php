@@ -27,7 +27,10 @@ Route::get('/students/{classroom}/{subject}', [Controllers\StudentsController::c
 Route::get('/homework/{classroom_id}/{subject_id}',[Controllers\ThreadsController::class,'showHomeworkSubmit'])->name('homework');
 Route::get('/homework/verify',[Controllers\ThreadsController::class,'verifyHomework'])->name('homework.verify');
 Route::post('/homework/verify',[Controllers\RegisterController::class,'registerHomework'])->name('register.homework');
-Route::get('/submit/{thread}',[Controllers\ThreadsController::class,'showSubmitThread'])->name('submit-thread');
-Route::post('/submit/{thread}',[Controllers\RegisterController::class,'registerComment'])->name('register-comment');
+Route::get('/submit/{thread}/{student}',[Controllers\ThreadsController::class,'showSubmitThread'])->name('submit-thread');
+Route::post('/submit/{thread}/{student}',[Controllers\RegisterController::class,'registerComment'])->name('register-comment');
 Route::get('/add-student',[Controllers\StudentsController::class,'showAddStudentForm'])->name('add-student-form');
 Route::post('/add-student',[Controllers\RegisterController::class,'addStudent'])->name('add-student');
+Route::get('/accept/{thread}',[Controllers\RegisterController::class,'acceptHomework'])->name('accept');
+Route::get('/student-homework-list/{student}/{subject}',[Controllers\StudentsController::class,'showHomework'])->name('student-homework-list');
+Route::get('/mypage/{student}',[Controllers\StudentsController::class,'showMypage'])->name('mypage');

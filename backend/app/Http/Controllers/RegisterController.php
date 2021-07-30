@@ -38,44 +38,72 @@ class RegisterController extends Controller
         return redirect(route('homework', [$request->input('classroom_id'), $request->input('subject_id')]));
     }
 
-    public function registerComment($thread, Request $request)
+    public function registerComment(Thread $thread, Request $request)
     {
         Comment::create([
             'name' => $request->input('name'),
             'comment' => $request->input('comment'),
             'image' => $request->input('image'),
-            'thread_id' => $thread
+            'thread_id' => $thread->id
         ]);
 
-        return redirect(route('submit-thread',[$thread]));
+        if ($thread->status === "-") {
+            $thread->status = "△";
+            $thread->save();
+        }
+
+        return redirect(route('submit-thread', [$thread]));
     }
 
     public function addStudent(Request $request)
     {
         User::create([
-            'name'=>$request->input('name'),
-            'email'=>$request->input('email'),
-            'password'=>$request->input('password'),
-            'role'=>1
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+            'role' => 10
         ]);
 
-        $new_user=User::where('email',$request->input('email'))->first();
+        $new_user = User::where('email', $request->input('email'))->first();
 
         Student::create([
-            'classroom_id'=>$request->classroom,
-            'user_id'=>$new_user->id
+            'classroom_id' => $request->classroom,
+            'user_id' => $new_user->id
         ]);
 
-        $new_student=Student::where('user_id',$new_user->id)->first();
-        $subjects=$request->input('subject');
+        $new_student = Student::where('user_id', $new_user->id)->first();
+        $subjects = $request->input('subject');
 
-        foreach ($subjects as $subject){
+        foreach ($subjects as $subject) {
             StudentSubject::create([
-                'subject_id'=>$subject,
-                'student_id'=>$new_student->id
+                'subject_id' => $subject,
+                'student_id' => $new_student->id
             ]);
         }
 
+        foreach ($subjects as $subject) {
+            $homeworks = Homework::where([
+                'classroom_id' => $request->classroom,
+                'subject_id' => $subject
+            ])->get();
+
+            foreach ($homeworks as $homework) {
+                Thread::create([
+                    'homework_id' => $homework->id,
+                    'student_id' => $new_student->id,
+                    'status' => "-"
+                ]);
+            }
+        }
+
         return redirect('add-student');
+    }
+
+    public function acceptHomework(Thread $thread)
+    {
+        $thread->status = "○";
+        $thread->save();
+
+        return redirect(route('submit-thread', [$thread->id]));
     }
 }
