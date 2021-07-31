@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddStudentRequest;
 use App\Models\Comment;
 use App\Models\Homework;
 use App\Models\Student;
@@ -55,7 +56,7 @@ class RegisterController extends Controller
         return redirect(route('submit-thread', [$thread]));
     }
 
-    public function addStudent(Request $request)
+    public function addStudent(AddStudentRequest $request)
     {
         User::create([
             'name' => $request->input('name'),

@@ -7,6 +7,15 @@
 @section('main')
     <div class="add-student">
         <div class="page-title">生徒追加</div>
+        @if ($errors->any())
+            <div class="validation">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form class="add-student__form" action="{{route('add-student')}}" method="post">
             @csrf
             <div>
