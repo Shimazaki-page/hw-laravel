@@ -3,14 +3,10 @@
         <a href="{{route('top')}}" class="header__logo">HOMEWORKing</a>
     </div>
     <div class="header__contents--right">
-        <ul class="header__authentication">
-            <li class="header__auth-list">
-                <a href="" class="header__auth-list--register">登録</a>
-            </li>
-            <li class="header__auth-list">
-                <a href="" class="header__auth-list--login">ログイン</a>
-            </li>
-        </ul>
+                <form action="{{route('logout')}}" method="post">
+                    @csrf
+                    <input type="submit" value="ログアウト">
+                </form>
     </div>
 </div>
 

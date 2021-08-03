@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddHomeworkRequest;
 use App\Http\Requests\AddStudentRequest;
+use App\Http\Requests\SubmitHomeworkRequest;
 use App\Models\Comment;
 use App\Models\Homework;
 use App\Models\Student;
@@ -14,7 +16,7 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    public function registerHomework(Request $request)
+    public function registerHomework(AddHomeworkRequest $request)
     {
         $homework = Homework::create([
             'homework' => $request->input('comment'),
@@ -39,21 +41,27 @@ class RegisterController extends Controller
         return redirect(route('homework', [$request->input('classroom_id'), $request->input('subject_id')]));
     }
 
-    public function registerComment(Thread $thread, Request $request)
+    public function registerComment(Thread $thread, Student $student, SubmitHomeworkRequest $request)
     {
-        Comment::create([
+        $comment = Comment::create([
             'name' => $request->input('name'),
             'comment' => $request->input('comment'),
-            'image' => $request->input('image'),
             'thread_id' => $thread->id
         ]);
+
+        if ($request->has('image')) {
+            $image_path = $request->file('image')->store('public/homework/');
+            $image_name = basename($image_path);
+            $comment->image = $image_name;
+            $comment->save();
+        }
 
         if ($thread->status === "-") {
             $thread->status = "△";
             $thread->save();
         }
 
-        return redirect(route('submit-thread', [$thread]));
+        return redirect(route('submit-thread', [$thread->id, $student->id]));
     }
 
     public function addStudent(AddStudentRequest $request)
@@ -106,5 +114,15 @@ class RegisterController extends Controller
         $thread->save();
 
         return redirect(route('submit-thread', [$thread->id]));
+    }
+
+    public function updateHomework(Request $request)
+    {
+        $homework = Homework::find($request->input('homework'));
+        $homework->homework = $request->input('comment');
+        $homework->name = $request->input('name');
+        $homework->save();
+
+        return redirect(route('homework', [$homework->classroom_id, $homework->subject_id]));
     }
 }

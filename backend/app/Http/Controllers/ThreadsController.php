@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddHomeworkRequest;
 use App\Models\Homework;
 use App\Models\Comment;
 use App\Models\Student;
 use App\Models\Thread;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ThreadsController extends Controller
 {
@@ -24,7 +25,7 @@ class ThreadsController extends Controller
         ]);
     }
 
-    public function verifyHomework(Request $request)
+    public function verifyHomework(AddHomeworkRequest $request)
     {
         $name = $request->input('name');
         $comment = $request->input('comment');
@@ -39,17 +40,48 @@ class ThreadsController extends Controller
         ]);
     }
 
-    public function showSubmitThread(Thread $thread ,Student $student)
+    public function showSubmitThread(Thread $thread, Student $student)
     {
+        if ($this->isOwnThread($student) == false) {
+            abort(403, '権限がありません。');
+        }
+
         $comments = Comment::where('thread_id', $thread->id)->get();
         $homework = Homework::where('id', $thread->homework_id)->first();
-        $student->load('user','classroom');
+        $student->load('user', 'classroom');
 
         return view('threads.submit_thread')->with([
             'comments' => $comments,
             'thread' => $thread,
             'homework' => $homework,
-            'student'=>$student
+            'student' => $student
+        ]);
+    }
+
+    public function showDeleteHomework(Homework $homework)
+    {
+        return view('threads.delete_homework')->with('homework', $homework);
+    }
+
+    public function showEditHomework(Homework $homework)
+    {
+        return view('threads.edit-homework')->with('homework', $homework);
+    }
+
+    public function isOwnThread($student): bool
+    {
+        if (Auth::user()->role == 10 && Auth::user()->id !== $student->user_id) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function verifyDeleteComment(Comment $comment_id, Student $student_id)
+    {
+        return view('threads.verify_delete_comment')->with([
+            'comment' => $comment_id,
+            'student' => $student_id
         ]);
     }
 }

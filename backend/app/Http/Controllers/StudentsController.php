@@ -5,11 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Classroom;
 use App\Models\Homework;
 use App\Models\Student;
-use App\Models\StudentSubject;
 use App\Models\Subject;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent;
+use Illuminate\Support\Facades\Auth;
 
 class StudentsController extends Controller
 {
@@ -64,6 +61,10 @@ class StudentsController extends Controller
 
     public function showHomework(Student $student, Subject $subject)
     {
+        if ($this->isOwnPage($student) == false) {
+            abort(403, '権限がありません。');
+        }
+
         $homeworks = Homework::where([
             'classroom_id' => $student->classroom_id,
             'subject_id' => $subject->id
@@ -78,13 +79,31 @@ class StudentsController extends Controller
 
     public function showMypage(Student $student)
     {
+        if ($this->isOwnPage($student) == false) {
+            abort(403, '権限がありません。');
+        }
+
         $subjects = Subject::with(['studentSubject' => function ($query) use ($student) {
             $query->where('student_id', $student->id);
         }])->get();
 
         return view('mypage')->with([
-            'student'=>$student,
-            'subjects'=>$subjects
+            'student' => $student,
+            'subjects' => $subjects
         ]);
+    }
+
+    public function isOwnPage($student): bool
+    {
+        if (Auth::user()->id == $student->user_id || Auth::user()->role == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function showDeleteStudent(Student $student)
+    {
+        return view('students.delete_student')->with('student', $student);
     }
 }

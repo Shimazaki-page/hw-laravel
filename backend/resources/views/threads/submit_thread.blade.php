@@ -7,6 +7,15 @@
 @section('main')
     <div class="submit-thread">
         <div class="page-title">宿題提出スレッド</div>
+        @if ($errors->any())
+            <div class="validation">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="submit-thread__student-name">
             <p class="submit-thread__info">クラス：{{$student->classroom->class_name}}</p>
             <p class="submit-thread__info">科目：{{$homework->subject->subject_name}}</p>
@@ -25,26 +34,33 @@
                 <div class="submit-thread__card">
                     <div class="submit-thread__contents">{{$comment->comment}}</div>
                     @if($comment->image)
-                        <img src="{{$comment->image}}" alt="" class="submit-thread__image">
+                        <div class="submit-thread__image">
+                            <img src="{{asset('storage/homework/'.$comment->image)}}" alt=""
+                                 class="submit-thread__image">
+                        </div>
                     @endif
                     <div class="submit-thread__name">{{$comment->name}}</div>
-                    <a href="" class="submit-thread__delete">削除</a>
+                    <a href="{{route('verify-delete-comment',[$comment->id,$student->id])}}" class="submit-thread__delete">削除</a>
                 </div>
             @endforeach
         @endif
-        <form action="{{route('register-comment',[$thread->id,$student->id])}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('register-comment',[$thread->id,$student->id])}}" method="post"
+              enctype="multipart/form-data">
             @csrf
             <div>
                 <label for="comment">コメント</label>
-                <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+                <textarea name="comment" id="comment" cols="30" rows="10">{{old('comment')}}</textarea>
             </div>
             <div>
                 <label for="name">氏名</label>
-                <input type="text" name="name" id="name">
+                <input type="text" name="name" id="name" value="{{old('name')}}">
             </div>
-            <input type="file" name="image" accept="image/*" multiple>
+            <input type="file" name="image" accept="image/*">
             <input type="submit" value="投稿">
         </form>
-        <a href="{{route('student-homework-list',[$student->id,$homework->subject_id])}}" class="submit-thread__list-link">宿題一覧へ</a>
+        @canany(['student','admin'])
+            <a href="{{route('student-homework-list',[$student->id,$homework->subject_id])}}"
+               class="submit-thread__list-link">宿題一覧へ</a>
+        @endcanany
     </div>
 @endsection

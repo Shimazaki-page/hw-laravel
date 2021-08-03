@@ -20,7 +20,7 @@
             @csrf
             <div>
                 <label for="name">名前</label>
-                <input type="name" id="name" name="name">
+                <input type="name" id="name" name="name" value="{{old('name')}}">
             </div>
             <div>
                 <label for="classroom">クラス</label>
@@ -38,11 +38,11 @@
             @endforeach
             <div>
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" value="{{old('email')}}">
             </div>
             <div>
                 <label for="password">生年月日</label>
-                <input type="text" id="password" name="password">
+                <input type="text" id="password" name="password" value="{{old('password')}}">
                 <p>※半角数字8桁で入力してください。(例；19801101)</p>
             </div>
             <input type="submit" value="追加">
