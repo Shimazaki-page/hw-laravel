@@ -656,7 +656,14 @@ html, body {
   padding: 3px;
 }
 .status__table-link {
+  display: block;
   width: 100%;
+  height: 100%;
+  transition: 0.3s ease;
+}
+.status__table-link:hover {
+  background-color: #0099FF;
+  color: #fff;
 }
 .status__button {
   text-align: center;
@@ -688,4 +695,73 @@ html, body {
   padding: 10px 20px;
   background-color: #0099FF;
   color: #fff;
+}
+
+.submit-thread__student-name {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submit-thread__info {
+  margin: 0 20px;
+  font-size: 16px;
+}
+.submit-thread__accept {
+  font-size: 14px;
+  padding: 5px 10px;
+  background-color: gray;
+  color: #fff;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+.submit-thread__accept:hover {
+  background-color: dimgrey;
+}
+.submit-thread__contents-wrap {
+  width: 70%;
+  margin: 0 auto;
+}
+.submit-thread__homework {
+  box-shadow: 0 0 4px gray;
+  margin: 20px auto;
+}
+.submit-thread__homework-label {
+  padding: 5px;
+  background-color: dimgrey;
+  color: #fff;
+  font-size: 13px;
+}
+.submit-thread__homework-contents {
+  background-color: #fff;
+  padding: 6px;
+}
+.submit-thread__card {
+  box-shadow: 0 0 4px gray;
+  background-color: #fff;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.submit-thread__card-top {
+  display: flex;
+  align-items: center;
+}
+.submit-thread__image {
+  width: 100px;
+  padding-top: 100px;
+}
+.submit-thread__image--none {
+  background-color: gray;
+}
+.submit-thread__footer {
+  display: flex;
+  margin-top: 10px;
+}
+.submit-thread__name {
+  font-weight: normal;
+  margin-right: 20px;
+  margin-left: auto;
+}
+.submit-thread__delete {
+  color: #0b69ff;
 }

@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('title')
-    TOP | 宿題管理システム
+    宿題投稿
 @endsection
 
 @section('main')

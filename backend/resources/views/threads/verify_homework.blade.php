@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('title')
-    TOP | 宿題管理システム
+    確認画面
 @endsection
 
 @section('main')

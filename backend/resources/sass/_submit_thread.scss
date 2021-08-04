@@ -1,0 +1,85 @@
+.submit-thread{
+    &__student-name{
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__info{
+        margin: 0 20px;
+        font-size: 16px;
+    }
+
+    &__accept{
+        font-size: 14px;
+        padding: 5px 10px;
+        background-color: gray;
+        color: #fff;
+        border-radius: 2px;
+        transition: .3s ease;
+
+        &:hover{
+            background-color:dimgrey;
+        }
+    }
+
+    &__contents-wrap{
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    &__homework{
+        box-shadow:0 0 4px gray ;
+        margin: 20px auto;
+
+        &-label{
+            padding: 5px;
+            background-color: dimgrey;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        &-contents{
+            background-color: #fff;
+            padding: 6px;
+        }
+    }
+
+    &__card{
+        box-shadow: 0 0 4px gray;
+        background-color: #fff;
+        padding: 5px;
+        margin-bottom: 10px;
+
+        &-top{
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__image{
+        width: 100px;
+        padding-top: 100px;
+
+        &--none{
+            background-color: gray;
+        }
+    }
+
+    &__footer{
+        display: flex;
+        margin-top: 10px;
+    }
+
+    &__name{
+        font-weight: normal;
+        margin-right: 20px;
+        margin-left: auto;
+    }
+
+    &__delete{
+        color: #0b69ff;
+    }
+}
+

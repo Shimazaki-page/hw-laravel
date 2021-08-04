@@ -108,12 +108,12 @@ class RegisterController extends Controller
         return redirect('add-student');
     }
 
-    public function acceptHomework(Thread $thread)
+    public function acceptHomework(Thread $thread,Student $student)
     {
         $thread->status = "○";
         $thread->save();
 
-        return redirect(route('submit-thread', [$thread->id]));
+        return redirect(route('submit-thread', [$thread->id,$student->id]));
     }
 
     public function updateHomework(Request $request)

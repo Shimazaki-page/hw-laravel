@@ -30,7 +30,7 @@ Route::middleware(['can:teacher','auth'])->group(function (){
     Route::post('/homework/verify',[Controllers\RegisterController::class,'registerHomework'])->name('register.homework');
     Route::get('/add-student',[Controllers\StudentsController::class,'showAddStudentForm'])->name('add-student-form');
     Route::post('/add-student',[Controllers\RegisterController::class,'addStudent'])->name('add-student');
-    Route::get('/accept/{thread}',[Controllers\RegisterController::class,'acceptHomework'])->name('accept');
+    Route::get('/accept/{thread}/{student}',[Controllers\RegisterController::class,'acceptHomework'])->name('accept');
     Route::get('/delete-student/{student}',[Controllers\StudentsController::class,'showDeleteStudent'])->name('verify-delete-student');
     Route::post('/delete-student',[Controllers\DeleteController::class,'deleteStudent'])->name('delete-student');
     Route::get('/delete-homework/{homework}',[Controllers\ThreadsController::class,'showDeleteHomework'])->name('verify-delete-homework');

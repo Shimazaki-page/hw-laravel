@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('title')
-    TOP | 宿題管理システム
+    宿題一覧
 @endsection
 
 @section('main')
@@ -25,6 +25,6 @@
         <div>
             {{$homeworks->links()}}
         </div>
-            <a href="{{route('mypage',[$student->id])}}" class="students-hw__for-mypage">マイページへ</a>
+        <a href="{{route('mypage',[$student->id])}}" class="students-hw__for-mypage">マイページへ</a>
     </div>
 @endsection

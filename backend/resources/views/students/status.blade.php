@@ -24,9 +24,10 @@
                     @foreach($homeworks as $homework)
                         @foreach(MyFunction::scopeStatus($student->id,$homework->id) as $thread)
                             @if($thread->status)
-                            <td class="status__table-status">
-                                <a class="status__table-link" href="{{route('submit-thread',[$thread->id,$student->id])}}">{{$thread->status}}</a>
-                            </td>
+                                <td class="status__table-status">
+                                    <a class="status__table-link"
+                                       href="{{route('submit-thread',[$thread->id,$student->id])}}">{{$thread->status}}</a>
+                                </td>
                             @else
                                 <td class="status__table-status">未</td>
                             @endif

@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('title')
-    TOP | 宿題管理システム
+    マイページ
 @endsection
 
 @section('main')
@@ -13,7 +13,8 @@
         </div>
         <div class="mypage__subjects">
             @foreach($subjects as $subject)
-            <a href="{{route('student-homework-list',[$student->id,$subject->id])}}" class="mypage__subject-link">{{$subject->subject_name}}</a>
+                <a href="{{route('student-homework-list',[$student->id,$subject->id])}}"
+                   class="mypage__subject-link">{{$subject->subject_name}}</a>
             @endforeach
         </div>
     </div>
