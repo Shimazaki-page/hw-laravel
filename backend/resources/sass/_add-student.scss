@@ -1,0 +1,66 @@
+.add-student{
+    &__form{
+        width: 30%;
+        margin: 50px auto;
+        background-color: #fff;
+        border: 2px solid $main-color;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    &__label{
+        display: block;
+        font-size: 14px;
+        margin-bottom: 5px;
+        color: $main-color;
+    }
+
+    &__text-part{
+    }
+
+    &__select-box{
+        border: 1px solid grey;
+    }
+
+    &__checkbox{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__text-field{
+        border: 1px solid grey;
+        width: 70%;
+        margin: 0 auto;
+        height: 30px;
+        padding: 0 10px;
+        text-align: center;
+
+    }
+
+    &__form-item{
+        margin: 0 auto 15px;
+        text-align: center;
+    }
+
+    &__birth-comment{
+        text-align: center;
+        font-size: 12px;
+        color: red;
+    }
+
+    &__form-footer{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
+
+    &__back-button{
+        margin-left: 20px;
+        background-color: grey;
+        border-radius: 5px;
+        color: #fff;
+        padding: 5px 10px;
+        font-weight: normal;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,40 @@
+.edit-homework{
+    &__form-contents{
+        width: 70%;
+        margin: 50px auto;
+    }
+
+    &__form-label{
+        display: block;
+    }
+
+    &__textarea{
+        width: 100%;
+        height: 60px;
+        padding: 5px;
+        border: 1px solid black;
+        color: #2d3748;
+    }
+
+    &__text-field{
+        width: 200px;
+        height: 30px;
+        padding: 5px;
+        border: 1px solid black;
+        color: #2d3748;
+    }
+
+    &__submit-button{
+        padding: 10px 20px;
+        background-color: $main-color;
+        color: #fff;
+        border-radius: 3px;
+    }
+
+    &__homework-link{
+        display: inline-block;
+        color: $main-color;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+}

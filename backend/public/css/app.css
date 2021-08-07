@@ -211,9 +211,7 @@ iframe {
  * Reset form fields to make them styleable
  */
 button,
-input,
 optgroup,
-select,
 textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -466,6 +464,22 @@ html, body {
   font-family: "M PLUS 1 p", sans-serif;
 }
 
+.paginate {
+  text-align: center;
+}
+
+.submit-button {
+  padding: 5px 10px;
+  color: #fff;
+  background-color: #0099FF;
+  border-radius: 5px;
+}
+
+.validation {
+  text-align: center;
+  color: red;
+}
+
 .main {
   color: #333333;
   font-weight: bold;
@@ -680,10 +694,13 @@ html, body {
   color: #111;
 }
 
+.homework__contents-wrap {
+  margin: 0 auto;
+  width: 70%;
+}
 .homework__card {
   background-color: #fff;
   box-shadow: 0 0 4px gray;
-  width: 70%;
   margin: 50px auto 10px;
   padding: 20px;
 }
@@ -691,10 +708,41 @@ html, body {
   background-color: #fff;
   border: solid 1px #111;
 }
+.homework__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+.homework__footer-content {
+  margin-left: 10px;
+}
+.homework__edit {
+  color: #0099FF;
+}
+.homework__delete {
+  color: #0099FF;
+}
+.homework__submit-form {
+  margin-top: 30px;
+}
 .homework__submit {
+  margin: 5px 0;
   padding: 10px 20px;
   background-color: #0099FF;
   color: #fff;
+  border-radius: 3px;
+}
+.homework__form-label {
+  display: block;
+}
+.homework__textarea {
+  width: 100%;
+  height: 60px;
+  border: 1px solid black;
+}
+.homework__text-field {
+  width: 200px;
+  height: 30px;
+  border: 1px solid black;
 }
 
 .submit-thread__student-name {
@@ -721,6 +769,7 @@ html, body {
 .submit-thread__contents-wrap {
   width: 70%;
   margin: 0 auto;
+  font-size: 14px;
 }
 .submit-thread__homework {
   box-shadow: 0 0 4px gray;
@@ -736,6 +785,9 @@ html, body {
   background-color: #fff;
   padding: 6px;
 }
+.submit-thread__list-link {
+  color: #0099FF;
+}
 .submit-thread__card {
   box-shadow: 0 0 4px gray;
   background-color: #fff;
@@ -745,10 +797,10 @@ html, body {
 .submit-thread__card-top {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .submit-thread__image {
   width: 100px;
-  padding-top: 100px;
 }
 .submit-thread__image--none {
   background-color: gray;
@@ -764,4 +816,237 @@ html, body {
 }
 .submit-thread__delete {
   color: #0b69ff;
+}
+.submit-thread__textarea {
+  resize: none;
+  width: 100%;
+  height: 40px;
+  display: block;
+  border: 1px solid gray;
+  font-size: 100%;
+  padding: 3px;
+}
+.submit-thread__name-area {
+  display: block;
+  border: 1px solid gray;
+  width: 30%;
+  height: 30px;
+  font-size: 100%;
+  padding: 5px;
+}
+.submit-thread__form-part {
+  margin-bottom: 10px;
+}
+.submit-thread__form-button {
+  padding: 5px 20px;
+  border-radius: 3px;
+  background-color: #0099FF;
+  color: #fff;
+}
+.submit-thread__status-link {
+  margin-left: 20px;
+  color: #0099FF;
+}
+.submit-thread__list-link {
+  margin-left: 20px;
+}
+
+.students-hw__student-info {
+  display: flex;
+  margin: 20px auto;
+  justify-content: center;
+}
+.students-hw__student-info-part {
+  margin-left: 30px;
+}
+.students-hw__card {
+  display: block;
+  margin: 10px auto;
+  padding: 5px;
+  width: 70%;
+  background-color: #fff;
+  box-shadow: 0 0 4px gray;
+}
+.students-hw__footer {
+  display: flex;
+  margin: 5px 0;
+  text-align: right;
+}
+.students-hw__name {
+  margin-left: auto;
+}
+.students-hw__date {
+  margin-left: 20px;
+}
+.students-hw__mypage-link {
+  color: #0099FF;
+}
+.students-hw__mypage-link-footer {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.mypage__student-info {
+  display: flex;
+  justify-content: center;
+}
+.mypage__student-name {
+  margin-left: 30px;
+}
+.mypage__subjects {
+  margin-top: 100px;
+  text-align: center;
+}
+.mypage__subject-link {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: 2px solid #0099FF;
+  background-color: #0099FF;
+  color: #fff;
+  transition: 0.3s ease;
+}
+.mypage__subject-link:hover {
+  background-color: #fff;
+  color: #0099FF;
+}
+
+.edit-homework__form-contents {
+  width: 70%;
+  margin: 50px auto;
+}
+.edit-homework__form-label {
+  display: block;
+}
+.edit-homework__textarea {
+  width: 100%;
+  height: 60px;
+  padding: 5px;
+  border: 1px solid black;
+  color: #2d3748;
+}
+.edit-homework__text-field {
+  width: 200px;
+  height: 30px;
+  padding: 5px;
+  border: 1px solid black;
+  color: #2d3748;
+}
+.edit-homework__submit-button {
+  padding: 10px 20px;
+  background-color: #0099FF;
+  color: #fff;
+  border-radius: 3px;
+}
+.edit-homework__homework-link {
+  display: inline-block;
+  color: #0099FF;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.verify-homework__form-contents {
+  width: 70%;
+  margin: 50px auto;
+}
+.verify-homework__main-comment {
+  display: inline-block;
+  width: 100%;
+  margin: 20px 0;
+  padding: 5px;
+  box-shadow: 0 0 4px grey;
+  background-color: #fff;
+}
+.verify-homework__submit-button {
+  padding: 10px 20px;
+  background-color: #0099FF;
+  color: #fff;
+  border-radius: 3px;
+}
+.verify-homework__back-button {
+  margin-left: 20px;
+  color: #0099FF;
+}
+
+.delete-homework__contents-wrap {
+  width: 70%;
+  margin: 50px auto;
+}
+.delete-homework__contents {
+  box-shadow: 0 0 4px grey;
+  background-color: #fff;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+.delete-homework__submit-button {
+  padding: 10px 20px;
+  background-color: #0099FF;
+  margin: 10px 0;
+  color: #fff;
+  border-radius: 3px;
+}
+.delete-homework__back-button {
+  margin-left: 20px;
+  color: #0099FF;
+}
+
+.add-student__form {
+  width: 30%;
+  margin: 50px auto;
+  background-color: #fff;
+  border: 2px solid #0099FF;
+  border-radius: 10px;
+  padding: 20px;
+}
+.add-student__label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #0099FF;
+}
+.add-student__select-box {
+  border: 1px solid grey;
+}
+.add-student__checkbox {
+  display: flex;
+  justify-content: space-between;
+}
+.add-student__text-field {
+  border: 1px solid grey;
+  width: 70%;
+  margin: 0 auto;
+  height: 30px;
+  padding: 0 10px;
+  text-align: center;
+}
+.add-student__form-item {
+  margin: 0 auto 15px;
+  text-align: center;
+}
+.add-student__birth-comment {
+  text-align: center;
+  font-size: 12px;
+  color: red;
+}
+.add-student__form-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.add-student__back-button {
+  margin-left: 20px;
+  background-color: grey;
+  border-radius: 5px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.delete-student__contents-wrap {
+  margin-top: 50px;
+  text-align: center;
+}
+.delete-student__verify-comment {
+  margin-bottom: 20px;
 }

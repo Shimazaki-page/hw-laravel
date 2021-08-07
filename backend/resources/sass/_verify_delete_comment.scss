@@ -1,0 +1,27 @@
+.verify-homework{
+    &__form-contents{
+        width: 70%;
+        margin: 50px auto;
+    }
+
+    &__main-comment{
+        display: inline-block;
+        width: 100%;
+        margin: 20px 0;
+        padding: 5px;
+        box-shadow: 0 0 4px grey;
+        background-color: #fff;
+    }
+
+    &__submit-button{
+        padding: 10px 20px;
+        background-color: $main-color;
+        color: #fff;
+        border-radius: 3px;
+    }
+
+    &__back-button{
+        margin-left: 20px;
+        color: $main-color;
+    }
+}

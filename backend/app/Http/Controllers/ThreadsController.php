@@ -46,7 +46,7 @@ class ThreadsController extends Controller
             abort(403, '権限がありません。');
         }
 
-        $comments = Comment::where('thread_id', $thread->id)->get();
+        $comments = Comment::where('thread_id', $thread->id)->simplePaginate(3);
         $homework = Homework::where('id', $thread->homework_id)->first();
         $student->load('user', 'classroom');
 
@@ -58,6 +58,15 @@ class ThreadsController extends Controller
         ]);
     }
 
+    public function isOwnThread($student): bool
+    {
+        if (Auth::user()->role == 10 && Auth::user()->id !== $student->user_id) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public function showDeleteHomework(Homework $homework)
     {
         return view('threads.delete_homework')->with('homework', $homework);
@@ -66,15 +75,6 @@ class ThreadsController extends Controller
     public function showEditHomework(Homework $homework)
     {
         return view('threads.edit-homework')->with('homework', $homework);
-    }
-
-    public function isOwnThread($student): bool
-    {
-        if (Auth::user()->role == 10 && Auth::user()->id !== $student->user_id) {
-            return false;
-        } else {
-            return true;
-        }
     }
 
     public function verifyDeleteComment(Comment $comment_id, Student $student_id)

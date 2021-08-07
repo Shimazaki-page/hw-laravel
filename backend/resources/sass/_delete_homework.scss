@@ -1,0 +1,26 @@
+.delete-homework{
+    &__contents-wrap{
+        width: 70%;
+        margin: 50px auto;
+    }
+
+    &__contents{
+        box-shadow: 0 0 4px grey;
+        background-color: #fff;
+        padding: 5px;
+        margin-bottom: 20px;
+    }
+
+    &__submit-button{
+        padding: 10px 20px;
+        background-color: $main-color;
+        margin: 10px 0;
+        color: #fff;
+        border-radius: 3px;
+    }
+
+    &__back-button{
+        margin-left: 20px;
+        color: $main-color;
+    }
+}

@@ -45,31 +45,41 @@
                             @endif
                         </div>
                         <div class="submit-thread__footer">
-                            <div class="submit-thread__name">{{$comment->name}}</div>
+                            <div class="submit-thread__name">投稿者：{{$comment->name}}</div>
                             <a href="{{route('verify-delete-comment',[$comment->id,$student->id])}}"
                                class="submit-thread__delete">削除</a>
                         </div>
                     </div>
                 @endforeach
             @endif
+            <div class="paginate">
+                {{$comments->links()}}
+            </div>
             <form action="{{route('register-comment',[$thread->id,$student->id])}}" method="post"
                   enctype="multipart/form-data">
                 @csrf
-                <div>
+                <div class="submit-thread__form-part">
                     <label for="comment">コメント</label>
                     <textarea class="submit-thread__textarea" name="comment" id="comment">{{old('comment')}}</textarea>
                 </div>
-                <div>
+                <div class="submit-thread__form-part">
                     <label for="name">氏名</label>
                     <input class="submit-thread__name-area" type="text" name="name" id="name" value="{{old('name')}}">
                 </div>
-                <input type="file" name="image" accept="image/*">
-                <input type="submit" value="投稿">
+                <div class="submit-thread__form-part">
+                    <input type="file" name="image" accept="image/*">
+                </div>
+                <input class="submit-thread__form-button" type="submit" value="投稿">
+                @canany(['teacher','admin'])
+                    <a href="{{route('students.status',[$student->classroom_id,$homework->subject_id])}}" class="submit-thread__status-link">
+                        宿題提出状況へ
+                    </a>
+                @endcanany
+                @canany(['student','admin'])
+                    <a href="{{route('student-homework-list',[$student->id,$homework->subject_id])}}"
+                       class="submit-thread__list-link">宿題一覧へ</a>
+                @endcanany
             </form>
-            @canany(['student','admin'])
-                <a href="{{route('student-homework-list',[$student->id,$homework->subject_id])}}"
-                   class="submit-thread__list-link">宿題一覧へ</a>
-            @endcanany
         </div>
     </div>
 @endsection

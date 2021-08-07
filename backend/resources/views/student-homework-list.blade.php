@@ -8,9 +8,9 @@
     <div class="students-hw">
         <div class="page-title">宿題一覧</div>
         <div class="students-hw__student-info">
-            <p>クラス：{{$student->classroom->class_name}}</p>
-            <p>氏名：{{$student->user->name}}</p>
-            <p>科目：{{$subject->subject_name}}</p>
+            <p class="students-hw__student-info-part">クラス：{{$student->classroom->class_name}}</p>
+            <p class="students-hw__student-info-part">氏名：{{$student->user->name}}</p>
+            <p class="students-hw__student-info-part">科目：{{$subject->subject_name}}</p>
         </div>
         @foreach($homeworks as $homework)
             <a href="{{route('submit-thread',[MyFunction::scopeHomework($homework->id,$student->id)->id,$student->id])}}"
@@ -25,6 +25,8 @@
         <div>
             {{$homeworks->links()}}
         </div>
-        <a href="{{route('mypage',[$student->id])}}" class="students-hw__for-mypage">マイページへ</a>
+        <div class="students-hw__mypage-link-footer">
+            <a href="{{route('mypage',[$student->id])}}" class="students-hw__mypage-link">マイページへ</a>
+        </div>
     </div>
 @endsection

@@ -7,9 +7,9 @@
 @section('main')
     <div class="mypage">
         <div class="page-title">受講科目一覧</div>
-        <div class="mypage__name">
-            <p>クラス：{{$student->classroom->class_name}}</p>
-            <p>氏名：{{$student->user->name}}</p>
+        <div class="mypage__student-info">
+            <p class="mypage__student-class">クラス：{{$student->classroom->class_name}}</p>
+            <p class="mypage__student-name">氏名：{{$student->user->name}}</p>
         </div>
         <div class="mypage__subjects">
             @foreach($subjects as $subject)

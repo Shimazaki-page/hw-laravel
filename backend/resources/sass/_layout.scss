@@ -5,6 +5,22 @@ html, body {
     font-family: $font-main;
 }
 
+.paginate{
+    text-align: center;
+}
+
+.submit-button{
+    padding: 5px 10px;
+    color: #fff;
+    background-color: $main-color;
+    border-radius: 5px;
+}
+
+.validation{
+    text-align: center;
+    color: red;
+}
+
 .main {
     color: #333333;
     font-weight: bold;
