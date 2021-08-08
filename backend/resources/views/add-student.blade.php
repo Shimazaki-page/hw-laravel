@@ -16,6 +16,16 @@
                 </ul>
             </div>
         @endif
+        @if(session('flash_message_fail'))
+            <div class="flash-message flash-message__red">
+                {{session('flash_message_fail')}}
+            </div>
+        @endif
+        @if(session('flash_message_success'))
+            <div class="flash-message flash-message__green">
+                {{session('flash_message_success')}}
+            </div>
+        @endif
         <form class="add-student__form" action="{{route('add-student')}}" method="post">
             @csrf
             <div class="add-student__text-part add-student__form-item">

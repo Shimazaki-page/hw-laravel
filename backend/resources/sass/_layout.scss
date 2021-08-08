@@ -21,6 +21,22 @@ html, body {
     color: red;
 }
 
+.flash-message{
+    margin-top: 50px;
+    padding: 10px 0;
+    text-align: center;
+
+    &__red{
+        background-color: #f9d0d7;
+        color: red;
+    }
+
+    &__green{
+        background-color: #d9efe2;
+        color: green;
+    }
+}
+
 .main {
     color: #333333;
     font-weight: bold;

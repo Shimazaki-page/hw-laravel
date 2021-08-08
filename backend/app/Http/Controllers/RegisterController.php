@@ -12,10 +12,17 @@ use App\Models\StudentSubject;
 use App\Models\Thread;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class RegisterController extends Controller
 {
+    /**
+     * @param AddHomeworkRequest $request
+     * @return Application|RedirectResponse|Redirector
+     */
     public function registerHomework(AddHomeworkRequest $request)
     {
         $homework = Homework::create([
@@ -41,6 +48,12 @@ class RegisterController extends Controller
         return redirect(route('homework', [$request->input('classroom_id'), $request->input('subject_id')]));
     }
 
+    /**
+     * @param Thread $thread
+     * @param Student $student
+     * @param SubmitHomeworkRequest $request
+     * @return Application|RedirectResponse|Redirector
+     */
     public function registerComment(Thread $thread, Student $student, SubmitHomeworkRequest $request)
     {
         $comment = Comment::create([
@@ -64,8 +77,16 @@ class RegisterController extends Controller
         return redirect(route('submit-thread', [$thread->id, $student->id]));
     }
 
+    /**
+     * @param AddStudentRequest $request
+     * @return Application|RedirectResponse|Redirector
+     */
     public function addStudent(AddStudentRequest $request)
     {
+        if ($this->isDuplicateEmail($request->input('email'))) {
+            return redirect(route('add-student'))->with('flash_message_fail', 'このメールアドレスは既に利用されています。');
+        }
+
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -105,17 +126,35 @@ class RegisterController extends Controller
             }
         }
 
-        return redirect('add-student');
+        return redirect('add-student')->with('flash_message_success','生徒を追加しました。');
     }
 
-    public function acceptHomework(Thread $thread,Student $student)
+    /**
+     * @param $email
+     * @return bool
+     */
+    public function isDuplicateEmail($email): bool
+    {
+        return User::where('email', $email)->exists();
+    }
+
+    /**
+     * @param Thread $thread
+     * @param Student $student
+     * @return Application|RedirectResponse|Redirector
+     */
+    public function acceptHomework(Thread $thread, Student $student)
     {
         $thread->status = "○";
         $thread->save();
 
-        return redirect(route('submit-thread', [$thread->id,$student->id]));
+        return redirect(route('submit-thread', [$thread->id, $student->id]));
     }
 
+    /**
+     * @param Request $request
+     * @return Application|RedirectResponse|Redirector
+     */
     public function updateHomework(Request $request)
     {
         $homework = Homework::find($request->input('homework'));

@@ -1,0 +1,25 @@
+.reset-pass{
+    width: 30%;
+    margin: 200px auto 0 ;
+    border: 2px solid $main-color;
+    box-shadow: 0 0 4px grey;
+    padding: 20px;
+
+    &__form-title{
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    &__form-contents{
+        margin-bottom: 20px;
+    }
+
+    &__text-field{
+        width: 100%;
+        border: 1px solid $main-color;
+        border-radius: 5px;
+        height: 30px;
+    }
+}

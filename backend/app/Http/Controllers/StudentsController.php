@@ -6,10 +6,16 @@ use App\Models\Classroom;
 use App\Models\Homework;
 use App\Models\Student;
 use App\Models\Subject;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 
 class StudentsController extends Controller
 {
+    /**
+     * @return Application|Factory|View
+     */
     public function showClasses()
     {
         $classes = Classroom::where('id', '<', 7)->get();
@@ -21,6 +27,11 @@ class StudentsController extends Controller
         ]);
     }
 
+    /**
+     * @param Classroom $classroom
+     * @param Subject $subject
+     * @return Application|Factory|View
+     */
     public function showStatus(Classroom $classroom, Subject $subject)
     {
         $homeworks = Homework::where([
@@ -39,6 +50,9 @@ class StudentsController extends Controller
         ]);
     }
 
+    /**
+     * @return Application|Factory|View
+     */
     public function showStudents()
     {
         $students = Student::with(['classroom', 'user' => function ($query) {
@@ -48,6 +62,9 @@ class StudentsController extends Controller
         return view('students.students_list')->with('students', $students);
     }
 
+    /**
+     * @return Application|Factory|View
+     */
     public function showAddStudentForm()
     {
         $classrooms = Classroom::all();
@@ -59,6 +76,11 @@ class StudentsController extends Controller
         ]);
     }
 
+    /**
+     * @param Student $student
+     * @param Subject $subject
+     * @return Application|Factory|View
+     */
     public function showHomework(Student $student, Subject $subject)
     {
         if ($this->isOwnPage($student) == false) {
@@ -77,6 +99,10 @@ class StudentsController extends Controller
         ]);
     }
 
+    /**
+     * @param Student $student
+     * @return Application|Factory|View
+     */
     public function showMypage(Student $student)
     {
         if ($this->isOwnPage($student) == false) {
@@ -93,6 +119,10 @@ class StudentsController extends Controller
         ]);
     }
 
+    /**
+     * @param $student
+     * @return bool
+     */
     public function isOwnPage($student): bool
     {
         if (Auth::user()->id == $student->user_id || Auth::user()->role == 1) {
@@ -102,6 +132,10 @@ class StudentsController extends Controller
         }
     }
 
+    /**
+     * @param Student $student
+     * @return Application|Factory|View
+     */
     public function showDeleteStudent(Student $student)
     {
         return view('students.delete_student')->with('student', $student);
