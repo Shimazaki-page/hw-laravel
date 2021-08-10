@@ -5,6 +5,13 @@
 学習塾での使用を想定した生徒の宿題管理システムを作成します。
 生徒の宿題管理を本ツールによって一元化することを目的とします。
 
+## 使用技術  
+- PHP 8.0.8
+- Laravel 8.48.2
+- nginx
+- MySQL
+- Docker/Docker Compose
+
 ## 環境
 
 - コンテナ作成(docker-compose.ymlのあるディレクトリで行う)
@@ -38,16 +45,16 @@
     - 宿題の投稿・削除  
       スレッド上で宿題を投稿できます。
     - 生徒の追加・削除
-    
-### ワイヤーフレーム  
-![ワイヤーフレーム](https://user-images.githubusercontent.com/79960631/126025577-f0dfeffe-fe00-495b-aee5-69cd4dff0d78.png)
-### 主要機能  
-- 宿題提出状況の確認  
-  講師が生徒の宿題を確認し、承認することで提出状況のステータスが変更されます。  
-  ![image](https://user-images.githubusercontent.com/79960631/128823333-da5fd41a-7d7d-4f73-b6f4-3d2df380dd94.gif)
-
 ### 内部機能
 https://user-images.githubusercontent.com/79960631/124242518-c80f0f80-db57-11eb-9337-80e222ac8b8f.png
+    
+### ワイヤーフレーム  
+https://user-images.githubusercontent.com/79960631/126025577-f0dfeffe-fe00-495b-aee5-69cd4dff0d78.png
+
+### 主要機能  
+  講師が生徒の宿題を確認し、承認することで提出状況のステータスが変更されます。  
+
+  ![image](https://user-images.githubusercontent.com/79960631/128823333-da5fd41a-7d7d-4f73-b6f4-3d2df380dd94.gif)
 
 ## ER図
-https://user-images.githubusercontent.com/79960631/125723458-c01b61df-efc8-4e28-936f-e56c6f852404.png
+![ER](https://user-images.githubusercontent.com/79960631/125723458-c01b61df-efc8-4e28-936f-e56c6f852404.png)
