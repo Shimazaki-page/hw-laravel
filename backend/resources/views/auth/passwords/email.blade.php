@@ -36,6 +36,7 @@
                                 <button type="submit" class="submit-button">
                                     送信
                                 </button>
+                                <a class="verify-homework__back-button" href="{{route('login')}}">ログイン</a>
                             </div>
                         </div>
                     </form>

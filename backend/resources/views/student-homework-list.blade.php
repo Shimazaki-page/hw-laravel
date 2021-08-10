@@ -26,7 +26,7 @@
             {{$homeworks->links()}}
         </div>
         <div class="students-hw__mypage-link-footer">
-            <a href="{{route('mypage',[$student->id])}}" class="students-hw__mypage-link">マイページへ</a>
+            <a href="{{route('mypage',[$student->id])}}" class="students-hw__mypage-link">科目一覧へ</a>
         </div>
     </div>
 @endsection

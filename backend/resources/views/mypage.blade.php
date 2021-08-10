@@ -12,9 +12,9 @@
             <p class="mypage__student-name">氏名：{{$student->user->name}}</p>
         </div>
         <div class="mypage__subjects">
-            @foreach($subjects as $subject)
-                <a href="{{route('student-homework-list',[$student->id,$subject->id])}}"
-                   class="mypage__subject-link">{{$subject->subject_name}}</a>
+            @foreach($student_subjects as $student_subject)
+                <a href="{{route('student-homework-list',[$student->id,$student_subject->subject->id])}}"
+                   class="mypage__subject-link">{{$student_subject->subject->subject_name}}</a>
             @endforeach
         </div>
     </div>

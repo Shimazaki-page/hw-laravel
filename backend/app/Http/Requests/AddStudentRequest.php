@@ -27,7 +27,7 @@ class AddStudentRequest extends FormRequest
             'name'=>'required|string',
             'email'=>'required|email',
             'subject'=>'required',
-            'password'=>'required|integer|digits:8'
+            'password'=>'required|digits:8'
         ];
     }
 

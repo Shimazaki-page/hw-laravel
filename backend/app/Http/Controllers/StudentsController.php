@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classroom;
 use App\Models\Homework;
 use App\Models\Student;
+use App\Models\StudentSubject;
 use App\Models\Subject;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -39,7 +40,6 @@ class StudentsController extends Controller
             'subject_id' => $subject->id
         ])->get();
 
-//        $scope_students_id=StudentSubject::where('subject_id',$subject->id)->get();
         $students = Student::where('classroom_id', $classroom->id)->with('user')->get();
 
         return view('students.status')->with([
@@ -109,13 +109,11 @@ class StudentsController extends Controller
             abort(403, '権限がありません。');
         }
 
-        $subjects = Subject::with(['studentSubject' => function ($query) use ($student) {
-            $query->where('student_id', $student->id);
-        }])->get();
+        $student_subjects=StudentSubject::with('subject')->where('student_id',$student->id)->get();
 
         return view('mypage')->with([
             'student' => $student,
-            'subjects' => $subjects
+            'student_subjects' => $student_subjects
         ]);
     }
 

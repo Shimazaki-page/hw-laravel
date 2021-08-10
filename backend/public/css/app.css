@@ -675,7 +675,7 @@ html, body {
   margin-bottom: 15px;
 }
 .status__table {
-  margin-left: 15%;
+  margin: 0 auto;
   text-align: center;
   background-color: #fff;
 }
@@ -761,6 +761,17 @@ html, body {
   width: 200px;
   height: 30px;
   border: 1px solid black;
+}
+.homework__form-item {
+  margin-bottom: 10px;
+}
+.homework__form-label-date {
+  display: block;
+}
+.homework__back-button {
+  display: inline-block;
+  color: #0099FF;
+  margin-left: 20px;
 }
 
 .submit-thread__student-name {
@@ -1123,4 +1134,24 @@ html, body {
   border: 1px solid #0099FF;
   border-radius: 5px;
   height: 30px;
+}
+
+.verify-homework__form {
+  width: 50%;
+  margin: 50px auto 0;
+}
+.verify-homework__form-label {
+  display: block;
+}
+.verify-homework__form-item {
+  margin-bottom: 10px;
+}
+.verify-homework__textarea {
+  width: 100%;
+  height: 60px;
+  border: 1px solid grey;
+}
+.verify-homework__text-field {
+  width: 200px;
+  border: 1px solid grey;
 }

@@ -15,7 +15,7 @@
             <tr class="status__column status__column--top">
                 <th></th>
                 @foreach($homeworks as $homework)
-                    <th class="status__date">{{$homework->date}}</th>
+                    <th class="status__date">{{$homework->date->format('Y/m/d')}}</th>
                 @endforeach
             </tr>
             @foreach($students as $student )

@@ -40,8 +40,8 @@
 
                 @error('email')
                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                    <strong style="color: red;">{{ $message }}</strong>
+                </span>
                 @enderror
             </div>
         </div>
@@ -50,13 +50,14 @@
             <label for="password" class=" login-page__form-label">パスワード</label>
 
             <div class="col-md-6">
-                <input id="password" type="password" class="form-control login-page__text-field @error('password') is-invalid @enderror"
+                <input id="password" type="password"
+                       class="form-control login-page__text-field @error('password') is-invalid @enderror"
                        name="password" required autocomplete="current-password">
 
                 @error('password')
                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                    <strong>{{ $message }}</strong>
+                </span>
                 @enderror
             </div>
         </div>

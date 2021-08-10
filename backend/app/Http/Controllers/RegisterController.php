@@ -16,6 +16,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -30,12 +31,21 @@ class RegisterController extends Controller
             'name' => $request->input('name'),
             'classroom_id' => $request->input('classroom_id'),
             'subject_id' => $request->input('subject_id'),
-            'date' => Carbon::now()
+            'date' => $request->input('date')
         ]);
 
-        $students = Student::where([
-            'classroom_id' => $request->input('classroom_id')
-        ])->get();
+        $student_ids=StudentSubject::where('subject_id',$request->input('subject_id'))->get('student_id');
+
+        foreach ($student_ids as $student_id){
+            $student= Student::where([
+                    'classroom_id' => $request->input('classroom_id'),
+                    'id'=>$student_id->student_id
+                ]);
+
+            if($student->exists()){
+                $students[]=$student->first();
+            }
+        }
 
         foreach ($students as $student) {
             Thread::create([
@@ -90,7 +100,7 @@ class RegisterController extends Controller
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => $request->input('password'),
+            'password' => Hash::make($request->input('password')),
             'role' => 10
         ]);
 

@@ -23,19 +23,6 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-
-//    protected function redirectTo(){
-//        if(Auth::role()==1){
-//            return '/';
-//        }
-//        return '/';
-//    }
-
 
     /**
      * Create a new controller instance.
@@ -49,10 +36,10 @@ class LoginController extends Controller
 
     public function authenticated(Request $request, $user)
     {
-        if($user->role ==1 || $user->role==5){
-            $this->redirectTo ='/';
-        }elseif($user->role==10){
-            $this->redirectTo='/mypage/'.$user->student->id;
+        if ($user->role == 1 || $user->role == 5) {
+            $this->redirectTo = '/';
+        } elseif ($user->role == 10) {
+            $this->redirectTo = '/mypage/' . $user->student->id;
         }
     }
 

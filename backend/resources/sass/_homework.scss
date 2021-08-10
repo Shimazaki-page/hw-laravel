@@ -60,4 +60,18 @@
         height: 30px;
         border: 1px solid black;
     }
+
+    &__form-item{
+        margin-bottom: 10px;
+    }
+
+    &__form-label-date{
+        display: block;
+    }
+
+    &__back-button{
+        display: inline-block;
+        color: $main-color;
+        margin-left: 20px;
+    }
 }

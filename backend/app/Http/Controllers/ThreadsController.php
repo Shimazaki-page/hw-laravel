@@ -16,7 +16,7 @@ class ThreadsController extends Controller
         $homeworks = Homework::where([
             'classroom_id' => $classroom_id,
             'subject_id' => $subject_id
-        ])->get();
+        ])->simplePaginate(3);
 
         return view('threads.homework_submit')->with([
             'homeworks' => $homeworks,
@@ -29,12 +29,14 @@ class ThreadsController extends Controller
     {
         $name = $request->input('name');
         $comment = $request->input('comment');
+        $date=$request->input('date');
         $classroom_id = $request->input('classroom_id');
         $subject_id = $request->input('subject_id');
 
         return view('threads.verify_homework')->with([
             'name' => $name,
             'comment' => $comment,
+            'date'=>$date,
             'classroom_id' => $classroom_id,
             'subject_id' => $subject_id
         ]);
