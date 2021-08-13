@@ -12,6 +12,7 @@ class MyFunction
             'student_id' => $student_id,
             'homework_id' => $homework_id
         ])->get();
+
         return $thread;
     }
 

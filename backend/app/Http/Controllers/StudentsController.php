@@ -50,6 +50,17 @@ class StudentsController extends Controller
         ]);
     }
 
+//    public function scopeMonthlyStatus($month)
+//    {
+//        for ($i = 1; $i <= 12; $i++) {
+//            $date[$i] = [
+//                'from' => 1,
+//                'to' => 31
+//            ];
+//
+//        }
+//    }
+
     /**
      * @return Application|Factory|View
      */
@@ -109,7 +120,7 @@ class StudentsController extends Controller
             abort(403, '権限がありません。');
         }
 
-        $student_subjects=StudentSubject::with('subject')->where('student_id',$student->id)->get();
+        $student_subjects = StudentSubject::with('subject')->where('student_id', $student->id)->get();
 
         return view('mypage')->with([
             'student' => $student,
