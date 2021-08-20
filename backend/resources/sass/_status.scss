@@ -5,7 +5,15 @@
 
         &-left {
             margin-bottom: 15px;
+
+            &--month{
+                margin-right: 10px;
+            }
         }
+    }
+
+    &__select-month{
+        display: flex;
     }
 
     &__table {

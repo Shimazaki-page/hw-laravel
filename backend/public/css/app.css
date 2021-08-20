@@ -674,6 +674,12 @@ html, body {
 .status__title-left {
   margin-bottom: 15px;
 }
+.status__title-left--month {
+  margin-right: 10px;
+}
+.status__select-month {
+  display: flex;
+}
 .status__table {
   margin: 0 auto;
   text-align: center;
