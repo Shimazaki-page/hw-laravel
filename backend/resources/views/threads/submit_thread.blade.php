@@ -21,9 +21,12 @@
             <p class="submit-thread__info">科目：{{$homework->subject->subject_name}}</p>
             <p class="submit-thread__info">氏名：{{$student->user->name}}</p>
             <p class="submit-thread__info submit-thread__state">提出状況：{{$thread->status}}</p>
-            @if($thread->status==="△")
-                <a href="{{route('accept',[$thread->id,$student->id])}}" class="submit-thread__info submit-thread__accept">承認</a>
-            @endif
+            @canany(['teacher','admin'])
+                @if($thread->status==="△")
+                    <a href="{{route('accept',[$thread->id,$student->id])}}"
+                       class="submit-thread__info submit-thread__accept">承認</a>
+                @endif
+            @endcanany
         </div>
         <div class="submit-thread__contents-wrap">
             <div class="submit-thread__homework">
@@ -46,8 +49,10 @@
                         </div>
                         <div class="submit-thread__footer">
                             <div class="submit-thread__name">投稿者：{{$comment->name}}</div>
-                            <a href="{{route('verify-delete-comment',[$comment->id,$student->id])}}"
-                               class="submit-thread__delete">削除</a>
+                            @canany(['teacher','admin'])
+                                <a href="{{route('verify-delete-comment',[$comment->id,$student->id])}}"
+                                   class="submit-thread__delete">削除</a>
+                            @endcanany
                         </div>
                     </div>
                 @endforeach
@@ -71,7 +76,8 @@
                 </div>
                 <input class="submit-thread__form-button" type="submit" value="投稿">
                 @canany(['teacher','admin'])
-                    <a href="{{route('students.status',[$student->classroom_id,$homework->subject_id])}}" class="submit-thread__status-link">
+                    <a href="{{route('students.status',[$student->classroom_id,$homework->subject_id,now()->format('Y-m')])}}"
+                       class="submit-thread__status-link">
                         宿題提出状況へ
                     </a>
                 @endcanany

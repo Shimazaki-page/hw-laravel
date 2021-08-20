@@ -16,13 +16,13 @@ class MyFunction
         return $thread;
     }
 
-//    public static function scopeHomework($homework_id, $student_id)
-//    {
-//        $thread = Thread::where([
-//            'homework_id' => $homework_id,
-//            'student_id' => $student_id
-//        ])->first();
-//
-//        return $thread;
-//    }
+    public static function scopeHomework($homework_id, $student_id)
+    {
+        $thread = Thread::where([
+            'homework_id' => $homework_id,
+            'student_id' => $student_id
+        ])->first();
+
+        return $thread;
+    }
 }
