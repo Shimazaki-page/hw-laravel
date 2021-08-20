@@ -1,11 +1,6 @@
 <div class="header__container">
     <div class="header__contents--left">
-        @canany(['teacher','admin'])
-            <a href="{{route('top')}}" class="header__logo">HOMEWORKing</a>
-        @endcanany
-        @can('student')
             <p class="header__logo">HOMEWORKing</p>
-        @endcan
     </div>
     <div class="header__contents--right">
         @auth

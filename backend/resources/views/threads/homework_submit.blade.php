@@ -47,7 +47,7 @@
                 <input type="hidden" name="classroom_id" value="{{$classroom_id}}">
                 <input type="hidden" name="subject_id" value="{{$subject_id}}">
                 <input class="homework__submit" type="submit" value="投稿">
-                <a class="homework__back-button" href="{{route('students.status',[$classroom_id,$subject_id])}}">宿題提出状況へ</a>
+                <a class="homework__back-button" href="{{route('students.status',[$classroom_id,$subject_id,now()->format('Y-m')])}}">宿題提出状況へ</a>
             </form>
         </div>
     </div>
