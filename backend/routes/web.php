@@ -24,7 +24,7 @@ Auth::routes();
 Route::middleware(['can:teacher', 'auth'])->group(function () {
     Route::get('/', [Controllers\StudentsController::class, 'showClasses'])->name('top');
     Route::get('/students', [Controllers\StudentsController::class, 'showStudents'])->name('students.students-list');
-    Route::get('/students/{classroom}/{subject}', [Controllers\StudentsController::class, 'showStatus'])->name('students.status');
+    Route::get('/students/{classroom}/{subject}/{month}', [Controllers\StudentsController::class, 'showStatus'])->name('students.status');
     Route::get('/homework/{classroom_id}/{subject_id}', [Controllers\ThreadsController::class, 'showHomeworkSubmit'])->name('homework');
     Route::get('/homework/verify', [Controllers\ThreadsController::class, 'verifyHomework'])->name('homework.verify');
     Route::post('/homework/verify', [Controllers\RegisterController::class, 'registerHomework'])->name('register.homework');

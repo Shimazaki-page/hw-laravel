@@ -16,7 +16,7 @@
                     @foreach($subjects as $subject)
                         <td class="top__line top__line--subject">
                             <a class="top__subject-link"
-                               href="{{route('students.status',[$class->id,$subject->id])}}">
+                               href="{{route('students.status',[$class->id,$subject->id,now()->format('Y-m')])}}">
                                 {{$subject->subject_name}}
                             </a>
                         </td>
