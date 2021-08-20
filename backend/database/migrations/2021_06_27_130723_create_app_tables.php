@@ -68,7 +68,7 @@ class CreateAppTables extends Migration
 
         Schema::create('threads', function (Blueprint $table) {
             $table->id();
-            $table->string('status')->default('-');
+            $table->string('status')->default(1);
             $table->foreignId('homework_id')->references('id')->on('homeworks')
                 ->onDelete('cascade');
             $table->foreignId('student_id')->references('id')->on('students')

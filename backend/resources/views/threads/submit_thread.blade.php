@@ -20,9 +20,9 @@
             <p class="submit-thread__info">クラス：{{$student->classroom->class_name}}</p>
             <p class="submit-thread__info">科目：{{$homework->subject->subject_name}}</p>
             <p class="submit-thread__info">氏名：{{$student->user->name}}</p>
-            <p class="submit-thread__info submit-thread__state">提出状況：{{$thread->status}}</p>
+            <p class="submit-thread__info submit-thread__state">提出状況：{{MyFunction::transStatus($thread->status)}}</p>
             @canany(['teacher','admin'])
-                @if($thread->status==="△")
+                @if($thread->status==2)
                     <a href="{{route('accept',[$thread->id,$student->id])}}"
                        class="submit-thread__info submit-thread__accept">承認</a>
                 @endif

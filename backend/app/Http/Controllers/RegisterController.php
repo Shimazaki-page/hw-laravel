@@ -51,7 +51,7 @@ class RegisterController extends Controller
             Thread::create([
                 'homework_id' => $homework->id,
                 'student_id' => $student->id,
-                'status' => '-'
+                'status' => 1
             ]);
         }
 
@@ -79,8 +79,8 @@ class RegisterController extends Controller
             $comment->save();
         }
 
-        if ($thread->status === "-") {
-            $thread->status = "△";
+        if ($thread->status == 1) {
+            $thread->status = 2;
             $thread->save();
         }
 
@@ -131,7 +131,7 @@ class RegisterController extends Controller
                 Thread::create([
                     'homework_id' => $homework->id,
                     'student_id' => $new_student->id,
-                    'status' => "-"
+                    'status' => 1
                 ]);
             }
         }
@@ -155,7 +155,7 @@ class RegisterController extends Controller
      */
     public function acceptHomework(Thread $thread, Student $student)
     {
-        $thread->status = "○";
+        $thread->status = 3;
         $thread->save();
 
         return redirect(route('submit-thread', [$thread->id, $student->id]));

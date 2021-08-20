@@ -38,7 +38,7 @@ class StudentsController extends Controller
         $homeworks = Homework::where([
             'classroom_id' => $classroom->id,
             'subject_id' => $subject->id
-        ])->where('date','like',"%$date%")->get();
+        ])->where('date', 'like', "%$date%")->get();
 
         $students = Student::where('classroom_id', $classroom->id)->with('user')->get();
 
@@ -49,25 +49,6 @@ class StudentsController extends Controller
             'students' => $students
         ]);
     }
-
-    private function scopeHomework($class_id,$subject_id, $month)
-    {
-        $scope_homeworks = Homework::where([
-            'classroom_id' => $class_id,
-            'subject_id' => $subject_id
-        ])->get();
-    }
-
-//    public function scopeMonthlyStatus($month)
-//    {
-//        for ($i = 1; $i <= 12; $i++) {
-//            $date[$i] = [
-//                'from' => 1,
-//                'to' => 31
-//            ];
-//
-//        }
-//    }
 
     /**
      * @return Application|Factory|View

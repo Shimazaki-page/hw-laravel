@@ -13,7 +13,7 @@
             <div class="status__select-month">
                 <p class="status__title-left--month">月</p>
                 <select name="select-month" onchange="location.href=value;">
-                    <option >選択</option>
+                    <option>選択</option>
                     <option value="{{route('students.status',[$classroom->id,$subject->id,'2021-01'])}}">1月</option>
                     <option value="{{route('students.status',[$classroom->id,$subject->id,'2021-02'])}}">2月</option>
                     <option value="{{route('students.status',[$classroom->id,$subject->id,'2021-03'])}}">3月</option>
@@ -29,31 +29,35 @@
                 </select>
             </div>
         </div>
-        <table class="status__table">
-            <tr class="status__column status__column--top">
-                <th></th>
-                @foreach($homeworks as $homework)
-                    <th class="status__date">{{$homework->date->format('Y/m/d')}}</th>
-                @endforeach
-            </tr>
-            @foreach($students as $student )
-                <tr class="status__column status__column--body">
-                    <th class="status__table-name">{{$student->user->name}}</th>
+        @if($homeworks->isEmpty())
+            <div>宿題が課されていません。</div>
+        @else
+            <table class="status__table">
+                <tr class="status__column status__column--top">
+                    <th></th>
                     @foreach($homeworks as $homework)
-                        @foreach(MyFunction::scopeStatus($student->id,$homework->id) as $thread)
-                            @if($thread->status)
-                                <td class="status__table-status">
-                                    <a class="status__table-link"
-                                       href="{{route('submit-thread',[$thread->id,$student->id])}}">{{$thread->status}}</a>
-                                </td>
-                            @else
-                                <td class="status__table-status">未</td>
-                            @endif
-                        @endforeach
+                        <th class="status__date">{{$homework->date->format('Y/m/d')}}</th>
                     @endforeach
                 </tr>
-            @endforeach
-        </table>
+                @foreach($students as $student )
+                    <tr class="status__column status__column--body">
+                        <th class="status__table-name">{{$student->user->name}}</th>
+                        @foreach($homeworks as $homework)
+                            @foreach(MyFunction::scopeStatus($student->id,$homework->id) as $thread)
+                                @if($thread->status)
+                                    <td class="status__table-status">
+                                        <a class="status__table-link"
+                                           href="{{route('submit-thread',[$thread->id,$student->id])}}">{{MyFunction::transStatus($thread->status)}}</a>
+                                    </td>
+                                @else
+                                    <td class="status__table-status">未</td>
+                                @endif
+                            @endforeach
+                        @endforeach
+                    </tr>
+                @endforeach
+            </table>
+        @endif
         <div class="status__button">
             <a href="{{route('homework',[$classroom->id,$subject->id])}}" class="status__submit-link">宿題投稿</a>
         </div>
