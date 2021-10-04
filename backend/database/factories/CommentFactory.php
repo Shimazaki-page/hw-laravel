@@ -22,10 +22,10 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-              'name'=>$this->faker->name(),
-            'comment'=>$this->faker->realText(),
-            'image'=>NULL,
-            'thread_id'=>$this->faker->numberBetween(1,90)
+            'name' => $this->faker->name(),
+            'comment' => $this->faker->realText(),
+            'image' => NULL,
+            'thread_id' => $this->faker->numberBetween(1, 90)
         ];
     }
 }

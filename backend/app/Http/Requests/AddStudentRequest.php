@@ -24,20 +24,20 @@ class AddStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|string',
-            'email'=>'required|email',
-            'subject'=>'required',
-            'password'=>'required|digits:8'
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'password' => 'required|digits:8'
         ];
     }
 
     public function attributes()
     {
         return [
-            'name'=>'名前',
-            'email'=>'メールアドレス',
-            'subject'=>'科目',
-            'password'=>'生年月日'
+            'name' => '名前',
+            'email' => 'メールアドレス',
+            'subject' => '科目',
+            'password' => '生年月日'
         ];
     }
 }

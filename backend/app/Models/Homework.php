@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Homework extends Model
 {
     use HasFactory;
-    protected $table='homeworks';
-    protected $fillable = ['classroom_id','subject_id','name','homework','date'];
-    protected $dates=['date'];
+
+    protected $table = 'homeworks';
+    protected $fillable = ['classroom_id', 'subject_id', 'name', 'homework', 'date'];
+    protected $dates = ['date'];
 
     public function subject()
     {

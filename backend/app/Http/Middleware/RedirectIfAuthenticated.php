@@ -35,8 +35,9 @@ class RedirectIfAuthenticated
         return $next($request);
     }
 
-    public function searchStudentId($user_id){
-        $student=Student::where('user_id',$user_id)->first();
+    public function searchStudentId($user_id)
+    {
+        $student = Student::where('user_id', $user_id)->first();
 
         return $student->id;
     }

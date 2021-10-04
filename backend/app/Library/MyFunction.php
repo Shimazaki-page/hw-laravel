@@ -28,14 +28,13 @@ class MyFunction
 
     public static function transStatus($status)
     {
-
         if ($status == 1) {
             return "-";
         } elseif ($status == 2) {
             return "△";
         } elseif ($status == 3) {
             return "○";
-        }else{
+        } else {
             return "ERR!";
         }
     }

@@ -11,7 +11,6 @@ use App\Models\Student;
 use App\Models\StudentSubject;
 use App\Models\Thread;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -34,16 +33,16 @@ class RegisterController extends Controller
             'date' => $request->input('date')
         ]);
 
-        $student_ids=StudentSubject::where('subject_id',$request->input('subject_id'))->get('student_id');
+        $student_ids = StudentSubject::where('subject_id', $request->input('subject_id'))->get('student_id');
 
-        foreach ($student_ids as $student_id){
-            $student= Student::where([
-                    'classroom_id' => $request->input('classroom_id'),
-                    'id'=>$student_id->student_id
-                ]);
+        foreach ($student_ids as $student_id) {
+            $student = Student::where([
+                'classroom_id' => $request->input('classroom_id'),
+                'id' => $student_id->student_id
+            ]);
 
-            if($student->exists()){
-                $students[]=$student->first();
+            if ($student->exists()) {
+                $students[] = $student->first();
             }
         }
 
@@ -54,7 +53,6 @@ class RegisterController extends Controller
                 'status' => 1
             ]);
         }
-
         return redirect(route('homework', [$request->input('classroom_id'), $request->input('subject_id')]));
     }
 
@@ -83,7 +81,6 @@ class RegisterController extends Controller
             $thread->status = 2;
             $thread->save();
         }
-
         return redirect(route('submit-thread', [$thread->id, $student->id]));
     }
 
@@ -136,7 +133,7 @@ class RegisterController extends Controller
             }
         }
 
-        return redirect('add-student')->with('flash_message_success','生徒を追加しました。');
+        return redirect('add-student')->with('flash_message_success', '生徒を追加しました。');
     }
 
     /**

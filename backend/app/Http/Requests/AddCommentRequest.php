@@ -24,9 +24,9 @@ class AddCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'comment'=>'required|string',
-            'name'=>'required|string',
-            'image'=>'image'
+            'comment' => 'required|string',
+            'name' => 'required|string',
+            'image' => 'image'
 
         ];
     }

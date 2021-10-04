@@ -32,8 +32,8 @@ class AddHomeworkRequest extends FormRequest
     public function attributes()
     {
         return [
-            'comment'=>'宿題内容',
-            'name'=>'名前'
+            'comment' => '宿題内容',
+            'name' => '名前'
         ];
     }
 }

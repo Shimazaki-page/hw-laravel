@@ -29,14 +29,14 @@ class ThreadsController extends Controller
     {
         $name = $request->input('name');
         $comment = $request->input('comment');
-        $date=$request->input('date');
+        $date = $request->input('date');
         $classroom_id = $request->input('classroom_id');
         $subject_id = $request->input('subject_id');
 
         return view('threads.verify_homework')->with([
             'name' => $name,
             'comment' => $comment,
-            'date'=>$date,
+            'date' => $date,
             'classroom_id' => $classroom_id,
             'subject_id' => $subject_id
         ]);
@@ -76,7 +76,7 @@ class ThreadsController extends Controller
 
     public function showEditHomework(Homework $homework)
     {
-        return view('threads.edit-homework')->with('homework', $homework);
+        return view('threads.edit_homework')->with('homework', $homework);
     }
 
     public function verifyDeleteComment(Comment $comment_id, Student $student_id)

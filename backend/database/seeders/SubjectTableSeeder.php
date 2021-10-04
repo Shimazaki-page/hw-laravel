@@ -14,9 +14,9 @@ class SubjectTableSeeder extends Seeder
      */
     public function run()
     {
-        $subjects=['国語','数学','英語','理科','社会'];
-        foreach ($subjects as $subject){
-            $param=['subject_name'=>$subject];
+        $subjects = ['国語', '数学', '英語', '理科', '社会'];
+        foreach ($subjects as $subject) {
+            $param = ['subject_name' => $subject];
             Subject::create($param);
         }
     }

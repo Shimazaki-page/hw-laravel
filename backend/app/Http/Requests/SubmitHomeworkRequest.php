@@ -24,16 +24,16 @@ class SubmitHomeworkRequest extends FormRequest
     public function rules()
     {
         return [
-            'comment'=>'required',
-            'name'=>'required|string',
+            'comment' => 'required',
+            'name' => 'required|string',
         ];
     }
 
     public function attributes()
     {
         return [
-            'comment'=>'コメント',
-            'name'=>'氏名'
+            'comment' => 'コメント',
+            'name' => '氏名'
         ];
     }
 }

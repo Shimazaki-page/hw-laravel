@@ -70,7 +70,7 @@ class StudentsController extends Controller
         $classrooms = Classroom::all();
         $subjects = Subject::all();
 
-        return view('add-student')->with([
+        return view('add_student')->with([
             'classrooms' => $classrooms,
             'subjects' => $subjects
         ]);
@@ -92,7 +92,7 @@ class StudentsController extends Controller
             'subject_id' => $subject->id
         ])->simplePaginate(5);
 
-        return view('student-homework-list')->with([
+        return view('student_homework_list')->with([
             'homeworks' => $homeworks,
             'student' => $student,
             'subject' => $subject
