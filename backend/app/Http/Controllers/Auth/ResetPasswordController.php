@@ -27,8 +27,9 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected function redirectTo(){
-        if(Auth::role()==1){
+    protected function redirectTo()
+    {
+        if (Auth::role() == 1) {
             return '/';
         }
     }
