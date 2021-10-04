@@ -1,5 +1,6 @@
 {
     "require-dev": {
-        "laravel/ui": "^3.3"
+        "laravel/ui": "^3.3",
+        "squizlabs/php_codesniffer": "*"
     }
 }

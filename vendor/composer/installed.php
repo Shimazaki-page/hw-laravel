@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '75dfb8a9941a7cbe074c70b76500079a0a19de5b',
+        'reference' => '04a48558429e1ff31608b2e70a777e23e67fbb4e',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '75dfb8a9941a7cbe074c70b76500079a0a19de5b',
+            'reference' => '04a48558429e1ff31608b2e70a777e23e67fbb4e',
             'dev_requirement' => false,
         ),
         'doctrine/inflector' => array(
@@ -173,6 +173,15 @@
             'install_path' => __DIR__ . '/../psr/simple-cache',
             'aliases' => array(),
             'reference' => '408d5eafb83c57f6365a3ca330ff23aa4a5fa39b',
+            'dev_requirement' => true,
+        ),
+        'squizlabs/php_codesniffer' => array(
+            'pretty_version' => '3.6.0',
+            'version' => '3.6.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../squizlabs/php_codesniffer',
+            'aliases' => array(),
+            'reference' => 'ffced0d2c8fa8e6cdc4d695a743271fab6c38625',
             'dev_requirement' => true,
         ),
         'symfony/console' => array(
