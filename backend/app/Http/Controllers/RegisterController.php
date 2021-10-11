@@ -11,6 +11,7 @@ use App\Models\Student;
 use App\Models\StudentSubject;
 use App\Models\Thread;
 use App\Models\User;
+use App\Repositories\UserEloquentRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -19,6 +20,16 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+    /**
+     * @var UserEloquentRepository
+     */
+    private $user;
+
+    public function __constructor()
+    {
+        $this->user = new UserEloquentRepository();
+    }
+
     /**
      * @param AddHomeworkRequest $request
      * @return Application|RedirectResponse|Redirector
@@ -94,14 +105,8 @@ class RegisterController extends Controller
             return redirect(route('add-student'))->with('flash_message_fail', 'このメールアドレスは既に利用されています。');
         }
 
-        User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-            'role' => 10
-        ]);
-
-        $new_user = User::where('email', $request->input('email'))->first();
+        $this->user->createUser($request);
+        $new_user = $this->user->getAUser('email', $request->input('email'));
 
         Student::create([
             'classroom_id' => $request->classroom,
