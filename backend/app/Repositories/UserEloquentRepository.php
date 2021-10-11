@@ -21,4 +21,10 @@ class UserEloquentRepository implements UserRepository
     {
         return User::where($column, $request)->first();
     }
+
+
+    public function isDuplicateEmail($column, $email): bool
+    {
+        return User::where($column, $email)->exists();
+    }
 }
