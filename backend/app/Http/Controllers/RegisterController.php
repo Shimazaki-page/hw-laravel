@@ -10,7 +10,11 @@ use App\Models\Homework;
 use App\Models\Student;
 use App\Models\StudentSubject;
 use App\Models\Thread;
-use App\Models\User;
+use App\Repositories\HomeworkEloquentRepository;
+use App\Repositories\StudentEloquentRepository;
+use App\Repositories\StudentSubjectEloquentRepository;
+use App\Repositories\ThreadEloquentRepository;
+use App\Repositories\UserEloquentRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,38 +24,56 @@ use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
     /**
+     * @var UserEloquentRepository
+     */
+    private $user;
+    /**
+     * @var HomeworkEloquentRepository
+     */
+    private $homework;
+    /**
+     * @var StudentSubjectEloquentRepository
+     */
+    private $student_subject;
+    /**
+     * @var StudentEloquentRepository
+     */
+    private $student;
+    /**
+     * @var ThreadEloquentRepository
+     */
+    private $thread;
+
+    public function __constructor()
+    {
+        $this->user = new UserEloquentRepository();
+        $this->homework = new HomeworkEloquentRepository();
+        $this->student_subject = new StudentSubjectEloquentRepository();
+        $this->student = new StudentEloquentRepository();
+        $this->thread = new ThreadEloquentRepository();
+    }
+
+    /**
      * @param AddHomeworkRequest $request
      * @return Application|RedirectResponse|Redirector
      */
     public function registerHomework(AddHomeworkRequest $request)
     {
-        $homework = Homework::create([
-            'homework' => $request->input('comment'),
-            'name' => $request->input('name'),
-            'classroom_id' => $request->input('classroom_id'),
-            'subject_id' => $request->input('subject_id'),
-            'date' => $request->input('date')
-        ]);
-
-        $student_ids = StudentSubject::where('subject_id', $request->input('subject_id'))->get('student_id');
+        $homework = $this->homework->createHomework($request);
+        $student_ids = $this->student_subject->getStudentIdArray($request);
 
         foreach ($student_ids as $student_id) {
-            $student = Student::where([
-                'classroom_id' => $request->input('classroom_id'),
-                'id' => $student_id->student_id
-            ]);
+            $student = $this->student->getStudentsInAClass($request, $student_id);
 
             if ($student->exists()) {
                 $students[] = $student->first();
             }
         }
 
-        foreach ($students as $student) {
-            Thread::create([
-                'homework_id' => $homework->id,
-                'student_id' => $student->id,
-                'status' => 1
-            ]);
+        if ($students) {
+            foreach ($students as $student) {
+                $this->thread->createThread($homework, $student);
+            }
         }
         return redirect(route('homework', [$request->input('classroom_id'), $request->input('subject_id')]));
     }
@@ -90,18 +112,12 @@ class RegisterController extends Controller
      */
     public function addStudent(AddStudentRequest $request)
     {
-        if ($this->isDuplicateEmail($request->input('email'))) {
+        if ($this->user->isDuplicateEmail('email', $request->input('email'))) {
             return redirect(route('add-student'))->with('flash_message_fail', 'このメールアドレスは既に利用されています。');
         }
 
-        User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-            'role' => 10
-        ]);
-
-        $new_user = User::where('email', $request->input('email'))->first();
+        $this->user->createUser($request);
+        $new_user = $this->user->getAUser('email', $request->input('email'));
 
         Student::create([
             'classroom_id' => $request->classroom,
@@ -134,15 +150,6 @@ class RegisterController extends Controller
         }
 
         return redirect('add-student')->with('flash_message_success', '生徒を追加しました。');
-    }
-
-    /**
-     * @param $email
-     * @return bool
-     */
-    public function isDuplicateEmail($email): bool
-    {
-        return User::where('email', $email)->exists();
     }
 
     /**
